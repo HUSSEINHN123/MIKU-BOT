@@ -11,16 +11,16 @@ if (!global.temp.welcomeEvent)
   try {
     const fontPath = path.join(__dirname, "cache", "english.ttf");
     if (!fs.existsSync(fontPath)) {
-      console.log("u");
+      console.log("جاري تحميل الخط...");
       const fontUrl = "https://raw.githubusercontent.com/cyber-ullash/cyber-ullash/main/english.ttf";
       const { data } = await axios.get(fontUrl, { responseType: "arraybuffer" });
       await fs.outputFile(fontPath, data);
-      console.log("l");
+      console.log("تم تحميل الخط بنجاح!");
     }
     registerFont(fontPath, { family: "ModernoirBold" });
-    console.log("l");
+    console.log("تم تسجيل الخط!");
   } catch (err) {
-    console.error("❌ Font a s h error:", err);
+    console.error("❌ خطأ في تحميل الخط:", err);
   }
 })();
 
@@ -62,11 +62,11 @@ async function sendWelcomeGifMessage(api, threadID, bodyText) {
       threadID
     );
   } catch (err) {
-    console.error("Failed to send welcome gif message:", err);
+    console.error("فشل في إرسال رسالة الترحيب:", err);
     try {
       await api.sendMessage(bodyText, threadID);
     } catch (e) {
-      console.error("Failed to send fallback welcome message:", e);
+      console.error("فشل في إرسال الرسالة البديلة:", e);
     }
   }
 }
@@ -91,14 +91,14 @@ module.exports = {
       defaultWelcomeMessage: "Xin chào {userName}.\nChào mừng bạn đến với {boxName}.\nChúc bạn có buổi {session} vui vẻ!"
     },
     en: {
-      session1: "morning",
-      session2: "noon",
-      session3: "afternoon",
-      session4: "evening",
-      welcomeMessage: "Thank you for inviting me to the group!\nBot prefix: %1\nTo view the list of commands, please enter: %1help",
-      multiple1: "you",
-      multiple2: "you guys",
-      defaultWelcomeMessage: `Hello {userName}.\nWelcome {multiple} to the chat group: {boxName}\nHave a nice {session} 😊`
+      session1: "صـبـاحـاً",
+      session2: "ظـهـراً",
+      session3: "بـعـد ظـهـرٍ",
+      session4: "مـسـاءً",
+      welcomeMessage: "شـكـرا لإضـافـتـي فـي هـذه الـمـجـمـوعـة ☺️!\nإلـيـك الـرمـز الـخـاص بـي : %1\nمـن أجـل رؤيـة قـائـمـة الاوامر, الـمـرجـو كـتـابـة: %1اوامر",
+      multiple1: "أنـت",
+      multiple2: "أنـتـم",
+      defaultWelcomeMessage: `أهـلا يـا {userName} 🎊\nنـورتـنـا فـي مـجـمـوعـتـنـا {boxName} ✨ \n أنـت الـعـضـو رقـم : {multiple} 🔖 \nتـمـتـع بـ {session} سـعـيـد 😊`
     }
   },
 
@@ -122,14 +122,14 @@ module.exports = {
 
               if (isAutoApprovedThread) {
                 await threadsData.set(threadID, { approved: true });
-                console.log(`Auto-approved thread ${threadID} from autoApprovedThreads list`);
+                console.log(`المجموعة ${threadID} تمت الموافقة عليها تلقائياً`);
 
                 setTimeout(async () => {
                   try {
                     const text = getLang("welcomeMessage", prefix);
                     await sendWelcomeGifMessage(api, threadID, text);
                   } catch (err) {
-                    console.error(`Failed to send welcome message to auto-approved thread ${threadID}:`, err.message);
+                    console.error(`فشل في إرسال رسالة الترحيب للمجموعة ${threadID}:`, err.message);
                   }
                 }, 2000);
                 return null;
@@ -140,17 +140,17 @@ module.exports = {
               if (threadApproval.adminNotificationThreads && threadApproval.adminNotificationThreads.length > 0 && threadApproval.sendNotifications !== false) {
                 setTimeout(async () => {
                   try {
-                    let threadInfo = { threadName: "Unknown", participantIDs: [] };
-                    let addedByName = "Unknown";
+                    let threadInfo = { threadName: "غير معروف", participantIDs: [] };
+                    let addedByName = "غير معروف";
 
                     try {
                       try {
                         const threadData = await threadsData.get(threadID);
-                        if (threadData && threadData.threadName && threadData.threadName !== "Unknown") {
+                        if (threadData && threadData.threadName && threadData.threadName !== "غير معروف") {
                           threadInfo.threadName = threadData.threadName;
                           threadInfo.participantIDs = threadData.members || [];
                         } else {
-                          throw new Error("threadsData returned unknown or empty");
+                          throw new Error("بيانات المجموعة غير متوفرة");
                         }
                       } catch (threadsDataErr) {
                         await new Promise(resolve => setTimeout(resolve, 3000));
@@ -158,46 +158,46 @@ module.exports = {
                         if (info && info.threadName) {
                           threadInfo = info;
                         } else {
-                          threadInfo.threadName = `Thread ${threadID}`;
+                          threadInfo.threadName = `المجموعة ${threadID}`;
                           threadInfo.participantIDs = [];
                         }
                       }
                     } catch (err) {
-                      console.error(`Failed to get thread info for ${threadID}:`, err.message);
-                      threadInfo.threadName = `Thread ${threadID}`;
+                      console.error(`فشل في الحصول على معلومات المجموعة ${threadID}:`, err.message);
+                      threadInfo.threadName = `المجموعة ${threadID}`;
                       threadInfo.participantIDs = [];
                     }
 
                     try {
                       if (event.author) {
                         addedByName = await usersData.getName(event.author);
-                        if (!addedByName || addedByName === "Unknown") {
+                        if (!addedByName || addedByName === "غير معروف") {
                           try {
                             const userInfo = await api.getUserInfo(event.author);
                             if (userInfo && userInfo[event.author] && userInfo[event.author].name) {
                               addedByName = userInfo[event.author].name;
                             } else {
-                              addedByName = `User ${event.author}`;
+                              addedByName = `المستخدم ${event.author}`;
                             }
                           } catch (apiErr) {
-                            addedByName = `User ${event.author}`;
+                            addedByName = `المستخدم ${event.author}`;
                           }
                         }
                       }
                     } catch (err) {
-                      console.error(`Failed to get user info:`, err.message);
-                      addedByName = "Unknown User";
+                      console.error(`فشل في الحصول على معلومات المستخدم:`, err.message);
+                      addedByName = "مستخدم غير معروف";
                     }
 
                     const notificationMessage =
-                      `🔔 BOT ADDED TO NEW THREAD 🔔\n\n` +
-                      `📋 Thread Name: ${threadInfo.threadName || "Unknown"}\n` +
-                      `🆔 Thread ID: ${threadID}\n` +
-                      `👤 Added by: ${addedByName}\n` +
-                      `👥 Members: ${threadInfo.participantIDs?.length || 0}\n` +
-                      `⏰ Time: ${new Date().toLocaleString()}\n\n` +
-                      `⚠️ This thread is NOT APPROVED. Bot will not respond to any commands.\n` +
-                      `Use "${prefix}mthread" to manage thread approvals.`;
+                      `🔔 إضـافـة البـوت إلـى مـجـمـوعـة جـديـدة 🔔\n\n` +
+                      `📋 اسـم الـمـجـمـوعـة: ${threadInfo.threadName || "غير معروف"}\n` +
+                      `🆔 رقـم الـمـجـمـوعـة: ${threadID}\n` +
+                      `👤 الـمـضـيـف: ${addedByName}\n` +
+                      `👥 عـدد الأعـضـاء: ${threadInfo.participantIDs?.length || 0}\n` +
+                      `⏰ الـوقـت: ${new Date().toLocaleString()}\n\n` +
+                      `⚠️ هـذه الـمـجـمـوعـة غـيـر مـوافـق عـلـيـهـا. الـبـوت لـن يـسـتـجـيـب لأي أمـر.\n` +
+                      `اسـتـخـدم "${prefix}mthread" لـإدارة الـمـوافـقـات.`;
 
                     for (let i = 0; i < threadApproval.adminNotificationThreads.length; i++) {
                       const notifyThreadID = threadApproval.adminNotificationThreads[i];
@@ -205,11 +205,11 @@ module.exports = {
                         if (i > 0) await new Promise(resolve => setTimeout(resolve, 1500));
                         await api.sendMessage(notificationMessage, notifyThreadID);
                       } catch (err) {
-                        console.error(`Failed to send notification to thread ${notifyThreadID}:`, err.message);
+                        console.error(`فشل في إرسال الإشعار إلى المجموعة ${notifyThreadID}:`, err.message);
                       }
                     }
                   } catch (err) {
-                    console.error(`Failed to send notifications:`, err.message);
+                    console.error(`فشل في إرسال الإشعارات:`, err.message);
                   }
                 }, 5000);
               }
@@ -219,14 +219,14 @@ module.exports = {
                   try {
                     await new Promise(resolve => setTimeout(resolve, 5000));
                     const warningMessage =
-                      `⚠️ This thread is not approved yet. Bot will not respond to any commands until approved by an admin.\n\n` +
-                      `Use "${prefix}help" after approval to see available commands.`;
+                      `⚠️ هـذه الـمـجـمـوعـة لـم يـتـم الـمـوافـقـة عـلـيـهـا بـعـد. الـبـوت لـن يـسـتـجـيـب لأي أمـر حـتـى الـمـوافـقـة.\n\n` +
+                      `اسـتـخـدم "${prefix}help" بـعـد الـمـوافـقـة لـرؤيـة الاوامر الـمـتـاحـة.`;
                     await api.sendMessage(warningMessage, threadID);
                   } catch (err) {
                     if (err.error === 1545116 || err.errorSummary === 'Thread disabled') {
-                      console.log(`Thread ${threadID} is disabled, skipping approval message`);
+                      console.log(`المجموعة ${threadID} معطلة، تخطي رسالة الموافقة`);
                     } else {
-                      console.error(`Failed to send approval message to thread ${threadID}:`, err.message);
+                      console.error(`فشل في إرسال رسالة الموافقة للمجموعة ${threadID}:`, err.message);
                     }
                   }
                 }, 10000);
@@ -234,7 +234,7 @@ module.exports = {
 
               return null;
             } catch (err) {
-              console.error(`Thread approval system error:`, err.message);
+              console.error(`خطأ في نظام الموافقة:`, err.message);
             }
           }
 
@@ -243,7 +243,7 @@ module.exports = {
               const text = getLang("welcomeMessage", prefix);
               await sendWelcomeGifMessage(api, threadID, text);
             } catch (err) {
-              console.error(`Failed to send welcome message to thread ${threadID}:`, err.message);
+              console.error(`فشل في إرسال رسالة الترحيب إلى المجموعة ${threadID}:`, err.message);
             }
           }, 2000);
           return null;
@@ -254,7 +254,7 @@ module.exports = {
           if (threadData?.settings?.sendWelcomeMessage === false)
             return;
 
-          const threadName = threadData.threadName || "Group Chat";
+          const threadName = threadData.threadName || "محادثة جماعية";
           const threadInfo = await api.getThreadInfo(threadID);
           const memberCount = threadInfo.participantIDs.length;
 
@@ -263,9 +263,9 @@ module.exports = {
           const userID = user.userFbId;
 
           const displayUserName =
-            userName && userName.trim() !== "" ? userName : "New member";
+            userName && userName.trim() !== "" ? userName : "عضو جديد";
           const displayThreadName =
-            threadName && threadName.trim() !== "" ? threadName : "Group chat";
+            threadName && threadName.trim() !== "" ? threadName : "المحادثة الجماعية";
 
           const avatarUrl = `https://graph.facebook.com/${userID}/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
 
@@ -316,11 +316,11 @@ module.exports = {
           ctx.shadowColor = "rgba(0,0,0,0.7)";
           ctx.shadowBlur = 4;
           const centerX = canvas.width / 2;
-          let currentY = canvas.height - overlayHeight + 40; // start inside overlay
+          let currentY = canvas.height - overlayHeight + 40;
 
           ctx.font = "bold 42px ModernoirBold";
           ctx.fillStyle = "#ffffff";
-          ctx.fillText("ASSALAMUALAIKUM", centerX, currentY);
+          ctx.fillText("الـسـلام عـلـيـكـم", centerX, currentY);
 
           currentY += 40;
           ctx.font = "bold 34px ModernoirBold";
@@ -334,7 +334,7 @@ module.exports = {
           ctx.font = "bold 28px ModernoirBold";
           ctx.fillStyle = "#ffffff";
 
-          const line3Text = `welcome to ${displayThreadName}`;
+          const line3Text = `مـرحـبـاً بـك فـي ${displayThreadName}`;
           const maxWidth = canvas.width - 160;
           const lineHeight = 32;
           currentY = wrapText(ctx, line3Text, centerX, currentY, maxWidth, lineHeight);
@@ -342,7 +342,7 @@ module.exports = {
           currentY += 34;
           ctx.font = "bold 24px ModernoirBold";
           ctx.fillStyle = "#00ffcc";
-          ctx.fillText(`You're the ${memberCount}th member of this group`, centerX, currentY);
+          ctx.fillText(`أنـت الـعـضـو رقـم ${memberCount} فـي هـذه الـمـجـمـوعـة`, centerX, currentY);
 
           const imgPath = path.join(__dirname, "cache", `welcome_${userID}.png`);
           await fs.ensureDir(path.dirname(imgPath));
@@ -354,9 +354,9 @@ module.exports = {
           message.send(
             {
               body: [
-                `Hello ${displayUserName} 👋`,
-                `Welcome to ${displayThreadName} 🎉`,
-                `You're the ${memberCount}th member of this group 🎊`
+                `مـرحـبـاً ${displayUserName} 👋`,
+                `أهـلاً وسـهـلاً بـك فـي ${displayThreadName} 🎉`,
+                `أنـت الـعـضـو رقـم ${memberCount} فـي هـذه الـمـجـمـوعـة 🎊`
               ].join("\n"),
               attachment: fs.createReadStream(imgPath)
             },
@@ -367,7 +367,7 @@ module.exports = {
             }
           );
         } catch (err) {
-          console.error("❌ Welcome event error (canvas):", err);
+          console.error("❌ حـدث خـطأ فـي فـعـالـيـة الـتـرحـيـب:", err);
         }
       };
   }
