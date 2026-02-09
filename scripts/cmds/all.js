@@ -1,18 +1,18 @@
 module.exports = {
 	config: {
-		name: "all",
+		name: "الكل",
 		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
 		role: 1,
 		description: {
 			vi: "Tag tất cả thành viên trong nhóm chat của bạn",
-			en: "Tag all members in your group chat"
+			en: "قم بعمل منسن لجميع أعضاء المجموعة"
 		},
-		category: "box chat",
+		category: "المجموعة",
 		guide: {
 			vi: "   {pn} [nội dung | để trống]",
-			en: "   {pn} [content | empty]"
+			en: "   {pn} [المحتوى | فارغ]"
 		}
 	},
 
@@ -20,7 +20,7 @@ module.exports = {
 		const { participantIDs } = event;
 		const lengthAllUser = participantIDs.length;
 		const mentions = [];
-		let body = args.join(" ") || "@all";
+		let body = args.join(" ") || "@الكل";
 		let bodyLength = body.length;
 		let i = 0;
 		for (const uid of participantIDs) {
