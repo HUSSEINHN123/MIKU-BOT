@@ -1,21 +1,25 @@
 module.exports = {
 	config: {
-		name: "onlyadminbox",
-		aliases: ["onlyadbox", "adboxonly", "adminboxonly"],
-		version: "1.4",
+		name: "فقط_الآدمن",
+		aliases: ["فقط مشرفو المجموعة", "adboxonly", "adminboxonly"],
+		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
 		role: 1,
-		description: {
-			vi: "bật/tắt chế độ chỉ quản trị của viên nhóm mới có thể sử dụng bot",
-			en: "turn on/off only admin box can use bot"
+		shortDescription: {
+			vi: "bật/tắt chỉ admin box sử dụng bot",
+			en: "تشغيل/إيقاف  صندوق الإدارة فقط من يمكنه استخدام الروبوت"
 		},
-		category: "box chat",
+		longDescription: {
+			vi: "bật/tắt chế độ chỉ quản trị của viên nhóm mới có thể sử dụng bot",
+			en: "تشغيل/إيقاف  صندوق الإدارة فقط من يمكنه استخدام الروبوت"
+		},
+		category: "المجموعة",
 		guide: {
-			vi: "   {pn} [on | off]: bật/tắt chế độ chỉ quản trị viên nhóm mới có thể sử dụng bot"
+			en: "   {pn} [on | off]: bật/tắt chế độ chỉ quản trị viên nhóm mới có thể sử dụng bot"
 				+ "\n   {pn} noti [on | off]: bật/tắt thông báo khi người dùng không phải là quản trị viên nhóm sử dụng bot",
-			en: "   {pn} [on | off]: turn on/off the mode only admin of group can use bot"
-				+ "\n   {pn} noti [on | off]: turn on/off the notification when user is not admin of group use bot"
+			en: "   {pn} [تشغيل | إيقاف]: تشغيل/إيقاف الوضع، يمكن لمسؤول المجموعة فقط استخدام الروبوت"
+				+ "\n   {pn} إشعار [تشغيل | إيقاف]: قم بتشغيل/إيقاف تشغيل الإشعار عندما لا يكون المستخدم مسؤولاً عن روبوت الاستخدام الجماعي"
 		}
 	},
 
@@ -28,11 +32,11 @@ module.exports = {
 			syntaxError: "Sai cú pháp, chỉ có thể dùng {pn} on hoặc {pn} off"
 		},
 		en: {
-			turnedOn: "Turned on the mode only admin of group can use bot",
-			turnedOff: "Turned off the mode only admin of group can use bot",
-			turnedOnNoti: "Turned on the notification when user is not admin of group use bot",
-			turnedOffNoti: "Turned off the notification when user is not admin of group use bot",
-			syntaxError: "Syntax error, only use {pn} on or {pn} off"
+			turnedOn: " ✅ |تم تشغيل الوضع، حيث يمكن لمسؤول المجموعة فقط  استخدام البوت",
+			turnedOff: " ❌ |تم إيقاف تشغيل الوضع، حيث يمكن لمسؤول المجموعة استخدام البوت",
+			turnedOnNoti: " ✅ |تم تشغيل الإشعار عندما لا يكون المستخدم مسؤولاً عن البوت الاستخدام الشامل",
+			turnedOffNoti: " ❌ |تم إيقاف تشغيل الإشعار عندما لا يكون المستخدم مسؤولاً عن البوت الاستخدام الجماعي",
+			syntaxError: " ⚠️ |خطأ في بناء الجملة, فقط استخدم {pn} تشغيل أو {pn} إيقاف"
 		}
 	},
 
@@ -42,15 +46,15 @@ module.exports = {
 		let keySetData = "data.onlyAdminBox";
 		let indexGetVal = 0;
 
-		if (args[0] == "noti") {
+		if (args[0] == "إشعار") {
 			isSetNoti = true;
 			indexGetVal = 1;
 			keySetData = "data.hideNotiMessageOnlyAdminBox";
 		}
 
-		if (args[indexGetVal] == "on")
+		if (args[indexGetVal] == "تشغيل")
 			value = true;
-		else if (args[indexGetVal] == "off")
+		else if (args[indexGetVal] == "إيقاف")
 			value = false;
 		else
 			return message.reply(getLang("syntaxError"));
