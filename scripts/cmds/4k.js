@@ -8,7 +8,7 @@ version: "1.0.3",
 permission: 0,
 credits: "NIROB",
 description: "رفع جودة الصورة من خلال الرد عليها",
-category: "image",
+category: "خدمات",
 usages: "رد على صورة",
 cooldowns: 5
 };
