@@ -32,13 +32,13 @@ function detectPlatformByUrl(url) {
 
 module.exports = {
   config: {
-    name: "autodl",
+    name: "اوتو",
     version: "5.2.0",
     author: "Ullash",
     countDown: 3,
     role: 0,
-    description: "Auto video downloader with URL",
-    category: "Media downloder"
+    description: "تنزيل تلقائي للمقاطع الفيديو من منصات مدعومة",
+    category: "وسائط"
   },
 
   onStart: async function () {},
@@ -93,12 +93,12 @@ module.exports = {
 
       const msg = 
 `╭◉━━━━◈━━━━◉╮
-│ ✨ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐜𝐨𝐦𝐩𝐥𝐞𝐭𝐞  ⚠️
+│ ✨ إكـتـمـل الـتـحـمـيـل  ⚠️
 │ 
-│ ☢️ 𝐩𝐥𝐚𝐭𝐟𝐨𝐫𝐦 • ${info.platform || "Unknown"}
-│ 🕳️ 𝐭𝐢𝐭𝐥𝐞   • ${info.title || "No Title"}
+│ ☢️ الـمـنـصـة • ${info.platform || "Unknown"}
+│ 🕳️ الـعـنـوان   • ${info.title || "No Title"}
 │
-│ 🌐 𝐔𝐫𝐥 • ${shortUrl}
+│ 🌐 الـرابـط • ${shortUrl}
 ╰◉━━━━◈━━━━◉╯`;
 
       await message.reply({
