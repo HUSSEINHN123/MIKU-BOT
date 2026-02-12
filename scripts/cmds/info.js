@@ -4,22 +4,22 @@ const path = require('path');
 
 module.exports = {
 	config: {
-		name: "info",
-		aliases: ["admin"],
+		name: "المطور",
+		aliases: ["owner"],
 		author: "ULLASH ",
 		role: 0,
-		shortDescription: "info and my owner the cmd",
+		shortDescription: "معلومات حول المطور",
 		longDescription: "",
-		category: "INFO",
+		category: "معلومات",
 		guide: "{pn}"
 	},
 
 	onStart: async function ({ api, event }) {
 		try {
 			const ULLASHInfo = {
-				name: '𝐮 𝐥 𝐥 𝐚 𝐬 𝐡 ッ',
+				name: 'Maher ッ',
 				gender: '𝐌𝐚𝐥𝐞',
-				age: '21',
+				age: '19',
 				Tiktok: 'ullash01',
 				Relationship: '𝐢𝐧 𝐜𝐨𝐦𝐩𝐥𝐢𝐜𝐚𝐭𝐞𝐝',
 				religion: '𝐈𝐬𝐥𝐚𝐦',
