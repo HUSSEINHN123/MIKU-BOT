@@ -3,14 +3,14 @@ const { createCanvas, loadImage } = require("canvas");
 
 module.exports = {
   config: {
-    name: "kiss",
+    name: "بوسة",
     version: "1.0.11",
     author: "Rakib Adil",
     countDown: 5,
     role: 0,
-    longDescription: "{p}kiss @mention or reply someone you want to kiss that person 😚",
-    category: "funny",
-    guide: "{p}kiss and mention someone you want to kiss 🥴",
+    longDescription: "{p}بوسة @منشن او رد على حد 😚",
+    category: "متعة",
+    guide: "{p}بوسة منشن حد او رد على رسالتو🥴",
 	 usePrefix : true,//you can use this cmd to no prefix, just set the true to false.
 	 premium: false,
     notes : " If you change the author then the command will not work and not usable"
@@ -29,7 +29,7 @@ module.exports = {
     }else if(event.type === "message_reply"){
         two = event.messageReply.senderID;
     }else{
-        message.reply("please mention or reply someone message to kiss him/her 🌚")
+        message.reply("❌ | منشن حد او رد على رسالته/ها 🌚")
     };
 
     try {
