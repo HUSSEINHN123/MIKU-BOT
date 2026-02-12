@@ -5,15 +5,15 @@ const fs = require("fs")
 
 module.exports = {
     config: {
-        name: "marry",
-        aliases: ["marry"],
+        name: "زوجيني",
+        aliases: ["زوجني"],
         version: "1.0",
         author: "AceGun",
         countDown: 5,
         role: 0,
-        shortDescription: "get a wife",
+        shortDescription: "احصل على زوجة",
         longDescription: "",
-        category: "marry",
+        category: "متعة",
         guide: "{pn}"
     },
 
@@ -21,7 +21,7 @@ module.exports = {
 
     onStart: async function ({ message, event, args }) {
         const mention = Object.keys(event.mentions);
-      if(mention.length == 0) return message.reply("Please mention someone");
+      if(mention.length == 0) return message.reply("❌ | منشن حد !");
 else if(mention.length == 1){
 const one = event.senderID, two = mention[0];
                 bal(one, two).then(ptth => { message.reply({ body: "「 i love you babe🥰❤️ 」", attachment: fs.createReadStream(ptth) }) })
