@@ -1,21 +1,21 @@
 const axios = require("axios");
 
 module.exports.config = {
-  name: "imgur",
+  name: "رابط2",
   version: "6.9",
   author: "dipto",
   countDown: 5,
   role: 0,
-  category: "tools",
+  category: "أدوات",
   description: "convert image/video into Imgur link",
-  usages: "reply [image, video]",
+  usages: "رد [صورة, مقطع]",
 };
 
 module.exports.onStart = async function ({ api, event }) {
   // প্রথমে চেক করি ইউজার রেপ্লাই দিয়েছে কি না
   if (!event.messageReply || !event.messageReply.attachments?.length) {
     return api.sendMessage(
-      "Please reply to an image or video.",
+      "⁉️ | رد على صورة او فيديو.",
       event.threadID,
       event.messageID
     );
