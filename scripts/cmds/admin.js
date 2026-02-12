@@ -3,23 +3,27 @@ const { writeFileSync } = require("fs-extra");
 
 module.exports = {
 	config: {
-		name: "admin",
-		version: "1.6",
+		name: "ادمن",
+		version: "1.5",
 		author: "NTKhang",
 		countDown: 5,
 		role: 2,
-		description: {
+		shortDescription: {
 			vi: "Thêm, xóa, sửa quyền admin",
-			en: "Add, remove, edit admin role"
+			en: "إ المسؤول إضافة وإزالة وتحرير دور"
 		},
-		category: "box chat",
+		longDescription: {
+			vi: "Thêm, xóa, sửa quyền admin",
+			en: "إضافة وإزالة وتحرير دور المسؤول"
+		},
+		category: "المالك",
 		guide: {
 			vi: '   {pn} [add | -a] <uid | @tag>: Thêm quyền admin cho người dùng'
 				+ '\n	  {pn} [remove | -r] <uid | @tag>: Xóa quyền admin của người dùng'
 				+ '\n	  {pn} [list | -l]: Liệt kê danh sách admin',
-			en: '   {pn} [add | -a] <uid | @tag>: Add admin role for user'
-				+ '\n	  {pn} [remove | -r] <uid | @tag>: Remove admin role of user'
-				+ '\n	  {pn} [list | -l]: List all admins'
+			en: '   {pn} [إضافة | -a] <آيدي | @تاغ>: قم بإضافة دور المسؤول للمستخدم'
+				+ '\n	  {pn} [إزالة | -r] <آيدي | @تاغ>: إزالة دور المسؤول للمستخدم'
+				+ '\n	  {pn} [قائمة | -l]: قائمة جميع المسؤولين'
 		}
 	},
 
@@ -34,19 +38,19 @@ module.exports = {
 			listAdmin: "👑 | Danh sách admin:\n%1"
 		},
 		en: {
-			added: "✅ | Added admin role for %1 users:\n%2",
-			alreadyAdmin: "\n⚠️ | %1 users already have admin role:\n%2",
-			missingIdAdd: "⚠️ | Please enter ID or tag user to add admin role",
-			removed: "✅ | Removed admin role of %1 users:\n%2",
-			notAdmin: "⚠️ | %1 users don't have admin role:\n%2",
-			missingIdRemove: "⚠️ | Please enter ID or tag user to remove admin role",
-			listAdmin: "👑 | List of admins:\n%1"
+			added: "✅ | تمت إضافة دور المشرف لـ %1 المستخدمين:\n%2",
+			alreadyAdmin: "\n⚠️ | %1 لدى المستخدمين بالفعل دور المسؤول:\n%2",
+			missingIdAdd: "⚠️ | الرجاء إدخال المعرف أو علامة المستخدم لإضافة دور المشرف",
+			removed: "✅ | تمت إزالة دور المسؤول لـ %1 من المستخدمين:\n%2",
+			notAdmin: "⚠️ | %1 ليس لدى المستخدمين دور المسؤول:\n%2",
+			missingIdRemove: "⚠️ | الرجاء إدخال المعرف أو علامة المستخدم لإزالة دور المشرف",
+			listAdmin: "👑 | قائمة المشرفين:\n%1"
 		}
 	},
 
 	onStart: async function ({ message, args, usersData, event, getLang }) {
 		switch (args[0]) {
-			case "add":
+			case "إضافة":
 			case "-a": {
 				if (args[1]) {
 					let uids = [];
@@ -76,7 +80,7 @@ module.exports = {
 				else
 					return message.reply(getLang("missingIdAdd"));
 			}
-			case "remove":
+			case "إزالة":
 			case "-r": {
 				if (args[1]) {
 					let uids = [];
@@ -104,7 +108,7 @@ module.exports = {
 				else
 					return message.reply(getLang("missingIdRemove"));
 			}
-			case "list":
+			case "قائمة":
 			case "-l": {
 				const getNames = await Promise.all(config.adminBot.map(uid => usersData.getName(uid).then(name => ({ uid, name }))));
 				return message.reply(getLang("listAdmin", getNames.map(({ uid, name }) => `• ${name} (${uid})`).join("\n")));
