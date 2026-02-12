@@ -2,17 +2,17 @@ const { GoatWrapper } = require("fca-liane-utils");
 
 module.exports = {
   config: {
-    name: "profile",
+    name: "بروفايل",
     aliases: ["pp", "pfp"],
     version: "1.2",
     author: "NIB (fixed by Mahbub Ullash)",
     countDown: 5,
     role: 0,
-    shortDescription: "Facebook profile picture",
-    longDescription: "See anyone's Facebook profile picture (self/reply/mention/link).",
-    category: "image",
+    shortDescription: "اطلع على صور بروفايل الجميع",
+    longDescription: "اطلع على صورة بروفايل اي شخص (نفسك/بالرد/المنشن/الرابط).",
+    category: "خدمات",
     guide: {
-      en: "{pn} [reply/@mention/link]"
+      en: "{pn} [رد على رسالة/@منشن/رابط]"
     }
   },
 
