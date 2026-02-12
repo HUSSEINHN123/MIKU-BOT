@@ -18,7 +18,7 @@ module.exports = {
     role: 0,
     shortDescription: "الحصول على معلومات المستخدم والصورة",
     longDescription: "احصل على معلومات المستخدم والصورة من خلال منشن",
-    category: "معلومات",
+    category: "خدمات",
   },
 
   onStart: async function ({ event, message, usersData, api, args, threadsData }) {
