@@ -4,19 +4,23 @@ function sleep(time) {
 
 module.exports = {
 	config: {
-		name: "filteruser",
-		version: "1.6",
+		name: "تصفية",
+		version: "1.5",
 		author: "NTKhang",
 		countDown: 5,
 		role: 1,
-		description: {
-			vi: "lọc thành viên nhóm theo số tin nhắn hoặc bị khóa acc",
-			en: "filter group members by number of messages or locked account"
+		shortDescription: {
+			vi: "lọc thành viên nhóm",
+			en: "تصفية أعضاء المم"
 		},
-		category: "box chat",
+		longDescription: {
+			vi: "lọc thành viên nhóm theo số tin nhắn hoặc bị khóa acc",
+			en: "تصفية أعضاء المجموعة حسب عدد الرسائل أو الحساب المقفل"
+		},
+		category: "المجموعة",
 		guide: {
 			vi: "   {pn} [<số tin nhắn> | die]",
-			en: "   {pn} [<number of messages> | die]"
+			en: "   {pn} [<عدد الرسائل> | معطلة]"
 		}
 	},
 
@@ -31,13 +35,13 @@ module.exports = {
 			noMsg: "✅ | Không có thành viên nào có số tin nhắn nhỏ hơn %1"
 		},
 		en: {
-			needAdmin: "⚠️ | Please add the bot as a group admin to use this command",
-			confirm: "⚠️ | Are you sure you want to delete group members with less than %1 messages?\nReact to this message to confirm",
-			kickByBlock: "✅ | Successfully removed %1 members unavailable account",
-			kickByMsg: "✅ | Successfully removed %1 members with less than %2 messages",
-			kickError: "❌ | An error occurred and could not kick %1 members:\n%2",
-			noBlock: "✅ | There are no members who are locked acc",
-			noMsg: "✅ | There are no members with less than %1 messages"
+			needAdmin: "⚠️ | الرجاء إضافة البوت كمسؤول في المجموعة لاستخدام هذا الأمر",
+			confirm: "⚠️ | هل أنت متأكد أنك تريد حذف أعضاء المجموعة الذين لديهم أقل من %1 رسائل?\nقم بالتفاعل على هذه الرسالة للتأكيد",
+			kickByBlock: "✅ | تمت الإزالة بنجاح %1 حساب الأعضاء الذين تمت إزالتهم",
+			kickByMsg: "✅ | تمت الإزالة بنجاح %1 الأعضاء الذين لديهم أقل من %2 رسالة",
+			kickError: "❌ | حدث خطأ وتعذر طرد %1 من الأعضاء:\n%2",
+			noBlock: "✅ | لا يوجد أعضاء الذين تم تأمينهم",
+			noMsg: "✅ | لا يوجد أعضاء لديهم أقل من %1 رسالة"
 		}
 	},
 
@@ -56,7 +60,7 @@ module.exports = {
 				});
 			});
 		}
-		else if (args[0] == "die") {
+		else if (args[0] == "معطلة") {
 			const threadData = await api.getThreadInfo(event.threadID);
 			const membersBlocked = threadData.userInfo.filter(user => user.type !== "User");
 			const errors = [];
