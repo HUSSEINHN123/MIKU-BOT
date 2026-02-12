@@ -17,22 +17,22 @@ const baseApiUrl = async () => {
 
 module.exports = {
   config: {
-    name: "removebg",
+    name: "ازالة",
     aliases: ["rbg"],
     version: "2.0",
     role: 0,
     author: "MAHBUB ULLASH",
-    category: "utility",
+    category: "خدمات",
     cooldowns: 5,
     guide: {
-      en: "Reply to an image to remove its background"
+      en: "رد على صورة لإزالة الخلفية"
     }
   },
 
   onStart: async ({ api, event }) => {
     try {
       if (!event.messageReply || !event.messageReply.attachments[0]?.url) {
-        return api.sendMessage("📸 𝙿𝚕𝚎𝚊𝚜𝚎 𝚛𝚎𝚙𝚕𝚢 𝚝𝚘 𝚊𝚗 𝚒𝚖𝚊𝚐𝚎!", event.threadID, event.messageID);
+        return api.sendMessage("📸 | المرجو الرد على صورة !", event.threadID, event.messageID);
       }
 
       const imgUrl = event.messageReply.attachments[0].url;
@@ -59,7 +59,7 @@ module.exports = {
 
           api.sendMessage(
             {
-              body: "✨ 𝙷𝚎𝚛𝚎'𝚜 𝚢𝚘𝚞𝚛 𝚒𝚖𝚊𝚐𝚎 (𝙱𝙶 𝚁𝚎𝚖𝚘𝚟𝚎𝚍)!",
+              body: "✨ | 𝙷𝚎𝚛𝚎'𝚜 𝚢𝚘𝚞𝚛 𝚒𝚖𝚊𝚐𝚎 (𝙱𝙶 𝚁𝚎𝚖𝚘𝚟𝚎𝚍)!",
               attachment: fs.createReadStream(filePath)
             },
             event.threadID,
