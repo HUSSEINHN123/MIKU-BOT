@@ -2,19 +2,23 @@ const { getTime } = global.utils;
 
 module.exports = {
 	config: {
-		name: "thread",
-		version: "1.5",
+		name: "مجموعة",
+		version: "1.4",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
-		description: {
-			vi: "Quản lý các nhóm chat trong hệ thống bot",
-			en: "Manage group chat in bot system"
+		shortDescription: {
+			vi: "Quản lý các nhóm chat",
+			en: "إدارة الدردشة الجماعية"
 		},
-		category: "owner",
+		longDescription: {
+			vi: "Quản lý các nhóm chat trong hệ thống bot",
+			en: "إدارة الدردشة الجماعية في نظام البوت"
+		},
+		category: "المالك",
 		guide: {
 			vi: "   {pn} [find | -f | search | -s] <tên cần tìm>: tìm kiếm nhóm chat trong dữ liệu bot bằng tên"
-				+ "\n   {pn} [find | -f | search | -s] [-j | joined] <tên cần tìm>: tìm kiếm nhóm chat trong dữ liệu mà bot còn tham gia bằng tên"
+				+ "\n   {pn} [جد | ج | بحث | -s] [إنضمام | تم الضم] <tên cần tìm>: tìm kiếm nhóm chat trong dữ liệu mà bot còn tham gia bằng tên"
 				+ "\n   {pn} [ban | -b] [<tid> | để trống] <reason>: dùng để cấm nhóm mang id <tid> hoặc nhóm hiện tại sử dụng bot"
 				+ "\n   Ví dụ:"
 				+ "\n    {pn} ban 3950898668362484 spam bot"
@@ -23,16 +27,16 @@ module.exports = {
 				+ "\n   Ví dụ:"
 				+ "\n    {pn} unban 3950898668362484"
 				+ "\n    {pn} unban",
-			en: "   {pn} [find | -f | search | -s] <name to find>: search group chat in bot data by name"
-				+ "\n   {pn} [find | -f | search | -s] [-j | joined] <name to find>: search group chat in bot data that bot still joined by name"
-				+ "\n   {pn} [ban | -b] [<tid> | leave blank] <reason>: use to ban group with id <tid> or current group using bot"
-				+ "\n   Example:"
-				+ "\n    {pn} ban 3950898668362484 spam bot"
-				+ "\n    {pn} ban spam too much"
-				+ "\n\n   {pn} unban [<tid> | leave blank] to unban group with id <tid> or current group"
-				+ "\n   Example:"
-				+ "\n    {pn} unban 3950898668362484"
-				+ "\n    {pn} unban"
+			en: "   {pn} [جد | ج | بحث | -s] <إسم من أحل البحث عنه>: قم بالبحث عن المجموعة التي يتواجد بها البوت إنطلاقا من الإسم"
+				+ "\n   {pn} [جد | ج | بحث | د إنضمام] [-j | من أجل الإنضمام] <الإسم من أجل البحث>: ابحث عن الدردشة الجماعية في بيانات البوت التي لا يزال البوت ينضم إليها بالاسم"
+				+ "\n   {pn} [حظر | -b] [<آيدي المجموعة> | أتركها فارغة] <السبب>: إستخدم من أجل حظر المجموعة مع الآيدي<آيدي المجموعة> أو من يستعمل البوت في ذالك الحين"
+				+ "\n   مثال:"
+				+ "\n    {pn} حظر 3950898668362484  إرسال بريد عشوائي للبوت"
+				+ "\n    {pn} إرسال بريد عشوائي بشكل كبير"
+				+ "\n\n   {pn} إلغاء_الحظر [<آيدي المجموعه> | أتركها فارغة] من أجل إلغاء الحظر المجموعة مع الآيدي<آيدي المجموعة> أو المجموعات الحالية"
+				+ "\n   مثال:"
+				+ "\n    {pn} إلغاء_الحظر 3950898668362484"
+				+ "\n    {pn} إلغاء_الحظر"
 		}
 	},
 
@@ -49,15 +53,15 @@ module.exports = {
 			info: "» Box ID: %1\n» Tên: %2\n» Ngày tạo data: %3\n» Tổng thành viên: %4\n» Nam: %5 thành viên\n» Nữ: %6 thành viên\n» Tổng tin nhắn: %7%8"
 		},
 		en: {
-			noPermission: "You don't have permission to use this feature",
-			found: "🔎 Found %1 group matching the keyword \"%2\" in bot data:\n%3",
-			notFound: "❌ No group found matching the keyword: \"%1\" in bot data",
-			hasBanned: "Group with id [%1 | %2] has been banned before:\n» Reason: %3\n» Time: %4",
-			banned: "Banned group with id [%1 | %2] using bot.\n» Reason: %3\n» Time: %4",
-			notBanned: "Group with id [%1 | %2] is not banned using bot",
-			unbanned: "Unbanned group with tid [%1 | %2] using bot",
-			missingReason: "Ban reason cannot be empty",
-			info: "» Box ID: %1\n» Name: %2\n» Date created data: %3\n» Total members: %4\n» Boy: %5 members\n» Girl: %6 members\n» Total messages: %7%8"
+			noPermission: "ليس لديك إذن لاستخدام هذه الميزة",
+			found: "🔎 تم إيجاد %1 من المجموعات التي توافق الكلمة المفتاح \"%2\" في بيانات البوت:\n%3",
+			notFound: "❌ ليس هناك أي مجموعة توافق الكلمة المفتاح: \"%1\" في بيانات البوت",
+			hasBanned: "المجموعة مع الآيدي [%1 | %2] تم حظرها من قبل:\n» السبب: %3\n» الوقت: %4",
+			banned: "تم حظر المجموعة  مع الآيدي [%1 | %2] using bot.\n» السبب: %3\n» الوقت: %4",
+			notBanned: "المجموعة مع الآيدي [%1 | %2] لم يتم حظرها لإستخدام البوت",
+			unbanned: "تم إلغاء الحظر للمجموعة مع الآيدي [%1 | %2] من إستخدام البوت",
+			missingReason: "الحظر مع السبب لا يمكن أن يترك فارغ",
+			info: "» المجموعة مع الآيدي: %1\n» الإسم: %2\n» البيانات اللتي تم إنشائها البيانات: %3\n» إجمالي عدد الاعضاء: %4\n» الأولاد: %5 الأعضاء\n» الفتيات: %6 الأعضاء\n» إجمال عدد الرسائل: %7%8"
 		}
 	},
 
@@ -66,8 +70,8 @@ module.exports = {
 
 		switch (type) {
 			// find thread
-			case "find":
-			case "search":
+			case "جد":
+			case "إبحث":
 			case "-f":
 			case "-s": {
 				if (role < 2)
@@ -89,7 +93,7 @@ module.exports = {
 				break;
 			}
 			// ban thread
-			case "ban":
+			case "حظر":
 			case "-b": {
 				if (role < 2)
 					return message.reply(getLang("noPermission"));
@@ -124,7 +128,7 @@ module.exports = {
 				return message.reply(getLang("banned", tid, name, reason, time));
 			}
 			// unban thread
-			case "unban":
+			case "إلغاء_الحظر":
 			case "-u": {
 				if (role < 2)
 					return message.reply(getLang("noPermission"));
@@ -148,7 +152,7 @@ module.exports = {
 				return message.reply(getLang("unbanned", tid, name));
 			}
 			// info thread
-			case "info":
+			case "معلومات":
 			case "-i": {
 				let tid;
 				if (!isNaN(args[1]))
@@ -160,13 +164,13 @@ module.exports = {
 				const threadData = await threadsData.get(tid);
 				const createdDate = getTime(threadData.createdAt, "DD/MM/YYYY HH:mm:ss");
 				const valuesMember = Object.values(threadData.members).filter(item => item.inGroup);
-				const totalBoy = valuesMember.filter(item => item.gender == "MALE").length;
-				const totalGirl = valuesMember.filter(item => item.gender == "FEMALE").length;
+				const totalBoy = valuesMember.filter(item => item.gender == "ذكر").length;
+				const totalGirl = valuesMember.filter(item => item.gender == "أنثى").length;
 				const totalMessage = valuesMember.reduce((i, item) => i += item.count, 0);
 				const infoBanned = threadData.banned.status ?
-					`\n- Banned: ${threadData.banned.status}`
-					+ `\n- Reason: ${threadData.banned.reason}`
-					+ `\n- Time: ${threadData.banned.date}` :
+					`\n- الحظر: ${threadData.banned.status}`
+					+ `\n- السبب: ${threadData.banned.reason}`
+					+ `\n- الوقت: ${threadData.banned.date}` :
 					"";
 				const msg = getLang("info", threadData.threadID, threadData.threadName, createdDate, valuesMember.length, totalBoy, totalGirl, totalMessage, infoBanned);
 				return message.reply(msg);
