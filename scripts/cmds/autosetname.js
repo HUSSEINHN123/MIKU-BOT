@@ -6,31 +6,35 @@ function checkShortCut(nickname, uid, userName) {
 
 module.exports = {
 	config: {
-		name: "autosetname",
-		version: "1.3",
+		name: "اسم-تلقائي",
+		version: "1.2",
 		author: "NTKhang",
 		cooldowns: 5,
 		role: 1,
-		description: {
-			vi: "Tự đổi biệt danh cho thành viên mới vào nhóm chat",
-			en: "Auto change nickname of new member"
+		shortDescription: {
+			vi: "Tự đổi biệt danh thành viên mới",
+			ar: "تغيير لقب العضو الجديد تلقائيًا"
 		},
-		category: "box chat",
+		longDescription: {
+			vi: "Tự đổi biệt danh cho thành viên mới vào nhóm chat",
+			ar: "تغيير لقب العضو الجديد تلقائيًا"
+		},
+		category: "المجموعة",
 		guide: {
-			vi: '   {pn} set <nickname>: dùng để cài đặt cấu hình để tự đổi biệt danh, với các shortcut có sẵn:'
+			vi: '   {pn} ضبط <اللقب>: dùng để cài đặt cấu hình để tự đổi biệt danh, với các shortcut có sẵn:'
 				+ '\n   + {userName}: tên thành viên vào nhóm'
 				+ '\n   + {userID}: id thành viên'
 				+ '\n   Ví dụ:'
 				+ '\n    {pn} set {userName} 🚀'
 				+ '\n\n   {pn} [on | off]: dùng để bật/tắt tính năng này'
 				+ '\n\n   {pn} [view | info]: hiển thị cấu hình hiện tại',
-			en: '   {pn} set <nickname>: use to set config to auto change nickname, with some shortcuts:'
-				+ '\n   + {userName}: name of new member'
-				+ '\n   + {userID}: member id'
-				+ '\n   Example:'
-				+ '\n    {pn} set {userName} 🚀'
-				+ '\n\n   {pn} [on | off]: use to turn on/off this feature'
-				+ '\n\n   {pn} [view | info]: show current config'
+			ar: '   {pn} ضبط <اللقب>: استخدمه لتعيين أو للتكوين أو لتغيير اللقب تلقائيًا، مع بعض الاختصارات:'
+				+ '\n   + {userName}: اسم العضو الجديد'
+				+ '\n   + {userID}: آيدي المجموعة'
+				+ '\n   مثال:'
+				+ '\n    {pn} ضبط {userName} 🚀'
+				+ '\n\n   {pn} [تشغيل | إيقاف]: تستخدم لتشغيل/لإيقاف هذه الميزة'
+				+ '\n\n   {pn} [عرض | معلومات]: إظهار التكوين الحالي'
 		}
 	},
 
@@ -45,22 +49,22 @@ module.exports = {
 			turnOffSuccess: "Tính năng autoSetName đã được tắt",
 			error: "Đã có lỗi xảy ra khi sử dụng chức năng autoSetName, thử tắt tính năng liên kết mời trong nhóm và thử lại sau"
 		},
-		en: {
-			missingConfig: "Please enter the required configuration",
-			configSuccess: "The configuration has been set successfully",
-			currentConfig: "The current autoSetName configuration in your chat group is:\n%1",
-			notSetConfig: "Your group has not set the autoSetName configuration",
-			syntaxError: "Syntax error, only \"{pn} on\" or \"{pn} off\" can be used",
-			turnOnSuccess: "The autoSetName feature has been turned on",
-			turnOffSuccess: "The autoSetName feature has been turned off",
-			error: "An error occurred while using the autoSetName feature, try turning off the invite link feature in the group and try again later"
+		ar: {
+			missingConfig: "الرجاء إدخال التكوين المطلوب",
+			configSuccess: "تم ضبط التكوين بنجاح",
+			currentConfig: "تكوين اللقب التلقائي الحالي في مجموعة الدردشة الخاصة بك هو:\n%1",
+			notSetConfig: "لم تقم مجموعتك بتعيين تكوين لقب تلقائي ",
+			syntaxError: "خطأ في بناء الجملة, فقط \"{pn} تشغيل\" أو \"{pn} إيقاف\" التي يمكنك إستخدامها",
+			turnOnSuccess: "تم تشغيل ميزة تعيين الاسم التلقائي",
+			turnOffSuccess: "تم إيقاف تشغيل ميزة تعيين الاسم التلقائي",
+			error: "حدث خطأ أثناء استخدام ميزة تعيين الاسم التلقائي، حاول إيقاف تشغيل ميزة رابط الدعوة في المجموعة وحاول مرة أخرى لاحقًا"
 		}
 	},
 
 	onStart: async function ({ message, event, args, threadsData, getLang }) {
 		switch (args[0]) {
-			case "set":
-			case "add":
+			case "ضبط":
+			case "إضافة":
 			case "config": {
 				if (args.length < 2)
 					return message.reply(getLang("missingConfig"));
@@ -68,14 +72,14 @@ module.exports = {
 				await threadsData.set(event.threadID, configAutoSetName, "data.autoSetName");
 				return message.reply(getLang("configSuccess"));
 			}
-			case "view":
-			case "info": {
+			case "عرض":
+			case "معلومات": {
 				const configAutoSetName = await threadsData.get(event.threadID, "data.autoSetName");
 				return message.reply(configAutoSetName ? getLang("currentConfig", configAutoSetName) : getLang("notSetConfig"));
 			}
 			default: {
 				const enableOrDisable = args[0];
-				if (enableOrDisable !== "on" && enableOrDisable !== "off")
+				if (enableOrDisable !== "تشغيل" && enableOrDisable !== "إيقاف")
 					return message.reply(getLang("syntaxError"));
 				await threadsData.set(event.threadID, enableOrDisable === "on", "settings.enableAutoSetName");
 				return message.reply(enableOrDisable == "on" ? getLang("turnOnSuccess") : getLang("turnOffSuccess"));
