@@ -11,13 +11,13 @@ moment.tz.setDefault("Asia/Dhaka");
 
 module.exports = {
   config: {
-    name: "uptime",
+    name: "ابتايم",
     aliases: ["upt"],
     version: "2.0.0",
     role: 0,
     credits: "MAHBUB ULLASH",
-    description: "Shows bot uptime with text on custom secured image",
-    category: "info",
+    description: "اظهار مدة تشغيل البوت",
+    category: "خدمات",
     guide: "{pn}"
   },
 
