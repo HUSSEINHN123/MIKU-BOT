@@ -3,25 +3,29 @@ const moment = require("moment-timezone");
 
 module.exports = {
 	config: {
-		name: "ban",
-		version: "1.4",
+		name: "حظر",
+		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
-		role: 1,
-		description: {
+		role: 2,
+		shortDescription: {
 			vi: "Cấm thành viên khỏi box chat",
-			en: "Ban user from box chat"
+			en: "قم بحظر المستخدم من المجموعة"
 		},
-		category: "box chat",
+		longDescription: {
+			vi: "Cấm thành viên khỏi box chat",
+			en: "قم بحظر المستخدم من المجموعة"
+		},
+		category: "المطور",
 		guide: {
 			vi: "   {pn} [@tag|uid|link fb|reply] [<lý do cấm>|để trống nếu không có lý do]: Cấm thành viên khỏi box chat"
 				+ "\n   {pn} check: Kiểm tra thành viên bị cấm và kick thành viên đó ra khỏi box chat"
 				+ "\n   {pn} unban [@tag|uid|link fb|reply]: Bỏ cấm thành viên khỏi box chat"
 				+ "\n   {pn} list: Xem danh sách thành viên bị cấm",
-			en: "   {pn} [@tag|uid|fb link|reply] [<reason>|leave blank if no reason]: Ban user from box chat"
-				+ "\n   {pn} check: Check banned members and kick them out of the box chat"
-				+ "\n   {pn} unban [@tag|uid|fb link|reply]: Unban user from box chat"
-				+ "\n   {pn} list: View the list of banned members"
+			en: "   {pn} [@تاغ|آيدي|رابط فيسبوك|قم بالرد] [<السبب>|أتركها غارغة إذا لم يكن هناك أي سبب]: حظر المستخدم من المجموعة"
+				+ "\n   {pn} تفقد: التحقق من الأعضاء المحظورين وطردهم من الدردشة"
+				+ "\n   {pn} إلغاء_الحظر [@تاغ|آيدي|رابط فيسبوك|قم بالرد]:.إلغاء الحظر عن المستخدم في المجموعة"
+				+ "\n   {pn} قائمة: عرض قائمة الأعضاء المحظورين"
 		}
 	},
 
@@ -45,22 +49,22 @@ module.exports = {
 			bannedKick: "⚠️ | %1 đã bị cấm khỏi box chat từ trước!\nUID: %2\nLý do: %3\nThời gian cấm: %4\n\nBot đã tự động kick thành viên này"
 		},
 		en: {
-			notFoundTarget: "⚠️ | Please tag the person to ban or enter uid or fb link or reply to the message of the person to ban",
-			notFoundTargetUnban: "⚠️ | Please tag the person to unban or enter uid or fb link or reply to the message of the person to unban",
-			userNotBanned: "⚠️ | The person with id %1 is not banned from this box chat",
-			unbannedSuccess: "✅ | Unbanned %1 from box chat!",
-			cantSelfBan: "⚠️ | You can't ban yourself!",
-			cantBanAdmin: "❌ | You can't ban the administrator!",
-			existedBan: "❌ | This person has been banned before!",
-			noReason: "No reason",
-			bannedSuccess: "✅ | Banned %1 from box chat!",
-			needAdmin: "⚠️ | Bot needs administrator permission to kick banned members",
-			noName: "Facebook user",
-			noData: "📑 | There are no banned members in this box chat",
-			listBanned: "📑 | List of banned members in this box chat (page %1/%2)",
-			content: "%1/ %2 (%3)\nReason: %4\nBan time: %5\n\n",
-			needAdminToKick: "⚠️ | Member %1 (%2) has been banned from box chat, but the bot does not have administrator permission to kick this member, please grant administrator permission to the bot to kick this member",
-			bannedKick: "⚠️ | %1 has been banned from box chat before!\nUID: %2\nReason: %3\nBan time: %4\n\nBot has automatically kicked this member"
+			notFoundTarget: "⚠️ | يرجى الإشارة إلى الشخص المراد حظره أو إدخال رابط آيدي أو فيسبوك أو الرد على رسالة الشخص المراد حظره",
+			notFoundTargetUnban: "⚠️ | يرجى الإشارة إلى الشخص الذي يريد رفع الحظر عنه أو إدخال رابط آيدي أو فيسبوك أو الرد على رسالة الشخص الذي يريد رفع الحظر عنه",
+			userNotBanned: "⚠️ | الشخص ذو الآيدي %1 لم يتم حظره من المجموعة",
+			unbannedSuccess: "✅ | غير محظور %1 من المجموعة!",
+			cantSelfBan: "⚠️ | لا يمكنك حظر نفسك!",
+			cantBanAdmin: "❌ | لا يمكنك حظر المسؤول!",
+			existedBan: "❌ | لقد تم حظر هذا الشخص من قبل!",
+			noReason: "لا يوجد سبب",
+			bannedSuccess: "✅ | محظور %1 من المجموعة!",
+			needAdmin: "⚠️ | يحتاج البوت إلى إذن المسؤول لطرد الأعضاء المحظورين",
+			noName: "مستخدم فيسبوك",
+			noData: "📑 | لايوجد أي شخص محظور في المجموعة",
+			listBanned: "📑 | قائمة الأعضاء المحظورين في المجموعة (صفحة %1/%2)",
+			content: "%1/ %2 (%3)\nالسبب: %4\nوقت الحظر: %5\n\n",
+			needAdminToKick: "⚠️ | العضو %1 (%2) قد تم حظره من المجموعة, لكن البوت ليس لديه إذن المسؤول لطرد هذا العضو، يرجى منح إذن المسؤول للبوت لطرد هذا العضو",
+			bannedKick: "⚠️ | %1 لقد تم حظره من قبل في المجموعة!\nآيدي: %2\nالسبب: %3\nوقت الحظر: %4\n\nقام البوت بطرد هذا العضو تلقائيًا"
 		}
 	},
 
@@ -72,7 +76,7 @@ module.exports = {
 
 		const dataBanned = await threadsData.get(event.threadID, 'data.banned_ban', []);
 
-		if (args[0] == 'unban') {
+		if (args[0] == 'إلغاء_الحظر') {
 			if (!isNaN(args[1]))
 				target = args[1];
 			else if (args[1]?.startsWith('https'))
@@ -94,7 +98,7 @@ module.exports = {
 
 			return api.sendMessage(getLang('unbannedSuccess', userName), event.threadID, event.messageID);
 		}
-		else if (args[0] == "check") {
+		else if (args[0] == "تفقد") {
 			if (!dataBanned.length)
 				return;
 			for (const user of dataBanned) {
@@ -161,11 +165,9 @@ module.exports = {
 		await threadsData.set(event.threadID, dataBanned, 'data.banned_ban');
 		message.reply(getLang('bannedSuccess', name), () => {
 			if (members.some(item => item.userID == target)) {
-				if (adminIDs.includes(api.getCurrentUserID())) {
-					if (event.participantIDs.includes(target))
-						api.removeUserFromGroup(target, event.threadID);
-				}
-				else {
+				if (adminIDs.includes(api.getCurrentUserID()))
+					api.removeUserFromGroup(target, event.threadID);
+				else
 					message.send(getLang('needAdmin'), (err, info) => {
 						global.GoatBot.onEvent.push({
 							messageID: info.messageID,
@@ -179,7 +181,6 @@ module.exports = {
 							}
 						});
 					});
-				}
 			}
 		});
 	},
