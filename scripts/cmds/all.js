@@ -1,13 +1,13 @@
 module.exports = {
 	config: {
-		name: "الكل",
+		name: "الجميع",
 		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
 		role: 1,
 		description: {
 			vi: "Tag tất cả thành viên trong nhóm chat của bạn",
-			en: "قم بعمل منسن لجميع أعضاء المجموعة"
+			en: "قم بعمل منشن لجميع أعضاء المجموعة"
 		},
 		category: "المجموعة",
 		guide: {
