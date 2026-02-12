@@ -3,24 +3,25 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ U L L A S H]"; 
+const doNotDelete = "[ᗰIKᑌ ᗩI]"; 
 
 module.exports = {
   config: {
-    name: "help",
+    name: "اوامر",
     version: "1.17",
-    author: "ULLASH",
+    author: "maher",
+    aliases:["أوامر","الاوامر","help"],
     countDown: 5,
     role: 0,
     shortDescription: {
-      en: "View command usage and list all commands directly",
+      en: "قم بالاطلاع على الوامر و كيفية استعمالها",
     },
     longDescription: {
-      en: "View command usage and list all commands directly",
+      en: "إطلع على قائمة الاوامر المتاحة وكيفبة استخدام كل امر على حدة",
     },
-    category: "info",
+    category: "النظام",
     guide: {
-      en: "{pn} / help cmdName ",
+      en: "{pn} *اوامر اسم-الامر ",
     },
     priority: 1,
   },
@@ -34,7 +35,7 @@ module.exports = {
       const categories = {};
       let msg = "╭───────❁";
 
-      msg += `\n│𝘂 𝗹 𝗹 𝗮 𝘀 𝗵 ッ 𝗛𝗘𝗟𝗣 𝗟𝗜𝗦𝗧\n╰────────────❁`; 
+      msg += `\n🅜🅘🅚🅤 🅐🅘 🅜🅔🅝🅤\n╰────────────❁`; 
 
       for (const [name, value] of commands) {
         if (value.config.role > 1 && role < value.config.role) continue;
@@ -60,9 +61,9 @@ module.exports = {
       });
 
       const totalCommands = commands.size;
-      msg += `\n\n╭─────✰[𝗘𝗡𝗝𝗢𝗬]\n│>𝗧𝗢𝗧𝗔𝗟 𝗖𝗠𝗗𝗦: [${totalCommands}].\n│𝗧𝗬𝗣𝗘𝖳:[ ${prefix}𝗛𝗘𝗟𝗣 𝗧𝗢\n│<𝗖𝗠𝗗> 𝗧𝗢 𝗟𝗘𝗔𝗥𝗡 𝗧𝗛𝗘 𝗨𝗦𝗔𝗚𝗘.]\n╰────────────✰`;
+      msg += `\n\n╭─────✰[إسـتـمـتـع مـع مـيـكـو]\n│>إجـمـالـي عـدد الاوامـر: [${totalCommands}] أمـر\n│أكـتـب :[ ${prefix}أوامر <إسم-الامر> مـن اجـل مـزيـد مـن الـمـعـلومـات.]\n╰────────────✰`;
       msg += ``;
-      msg += `\n╭─────✰\n│ ♥︎╣[❉𝘂 𝗹 𝗹 𝗮 𝘀 𝗵 ッ❉]╠♥︎\n╰────────────✰`; 
+      msg += `\n╭─────✰\n│ ♥︎╣[❉ᗰIKᑌ ᗩI❉]╠♥︎\n╰────────────✰`; 
 
  				const helpListImages = [ "https://files.catbox.moe/utby7g.jpeg" ];
 
@@ -92,13 +93,13 @@ module.exports = {
         const response = `
   ╭───⊙
   │ 🔶 ${configCommand.name}
-  ├── INFO
-  │ 📝 𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻: ${longDescription}
-  │ 👑 𝗔𝘂𝘁𝗵𝗼𝗿: ${author}
-  │ ⚙ 𝗚𝘂𝗶𝗱𝗲: ${usage}
-  ├── USAGE
-  │ 🔯 𝗩𝗲𝗿𝘀𝗶𝗼𝗻: ${configCommand.version || "1.0"}
-  │ ♻𝗥𝗼𝗹𝗲: ${roleText}
+  ├── مـعـلـومـات
+  │ 📝 الـوصـف: ${longDescription}
+  │ 👑 الـمـؤلـف: ${author}
+  │ ⚙ إرشـادات: ${usage}
+  ├── كـيـفـيـة الاسـتـعـمـال
+  │ 🔯 الاصـدار: ${configCommand.version || "1.0"}
+  │ ♻ الـدور: ${roleText}
   ╰────────────⊙`;
 
         await message.reply(response);
