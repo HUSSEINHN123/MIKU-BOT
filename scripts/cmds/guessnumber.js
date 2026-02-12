@@ -20,46 +20,30 @@ const rows = [
 
 module.exports = {
 	config: {
-		name: "guessnumber",
-		aliases: ["guessnum"],
-		version: "1.1",
+		name: "احزر",
+		aliases: ["خمن"],
+		version: "1.0",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
-		description: {
+		shortDescription: {
 			vi: "Game đoán số",
-			en: "Guess number game"
+			en: "لعبة إحزر من الرقم"
 		},
-		category: "game",
+		longDescription: {
+			vi: "Game đoán số",
+			en: "  لعبة حزر الرقم المناسب"
+		},
+		category: "العاب",
 		guide: {
-			vi: "  {pn} [4 | 5 | 6] [single | multi]: tạo một bàn chơi mới, với:"
-				+ "\n    4 5 6 là số chữ số của số cần đoán, mặc định là 4."
-				+ "\n    single | multi là chế độ chơi, single là 1 người chơi, multi là nhiều người chơi, mặc định là single."
-				+ "\n   Ví dụ:"
-				+ "\n    {pn}"
-				+ "\n    {pn} 4 single"
-				+ "\n"
-				+ "\n   Cách chơi: người chơi trả lời tin nhắn của bot theo quy tắc sau:"
-				+ "\n   Bạn có " + rows.map(item => `${item.row} lần (${item.col} số)`).join(", ") + "."
-				+ "\n   Sau mỗi lần đoán, bạn sẽ nhận được thêm gợi ý là số lượng chữ số đúng (hiển thị bên trái) và số lượng chữ số đúng vị trí (hiển thị bên phải)."
-				+ "\n   Lưu ý: Số được hình thành với các chữ số từ 0 đến 9, mỗi chữ số xuất hiện duy nhất một lần và số có thể đứng đầu là 0."
+			vi: "  {pn} [4 | 5 | 6] [single | multi]: tạo một bàn chơi mới, với:\n    4 5 6 là số chữ số của số cần đoán, mặc định là 4.\n    single | multi là chế độ chơi, single là 1 người chơi, multi là nhiều người chơi, mặc định là single.\n   Ví dụ:\n    {pn}\n    {pn} 4 single\n\n   Cách chơi: người chơi trả lời tin nhắn của bot theo quy tắc sau:\n   Bạn có 10 lần đoán (4 số), 12 lần (5 số), 15 lần (6 số).\n   Sau mỗi lần đoán, bạn sẽ nhận được thêm gợi ý là số lượng chữ số đúng (hiển thị bên trái) và số lượng chữ số đúng vị trí (hiển thị bên phải).\n   Lưu ý: Số được hình thành với các chữ số từ 0 đến 9, mỗi chữ số xuất hiện duy nhất một lần và số có thể đứng đầu là 0."
 				+ "\n\n   {pn} rank <trang>: xem bảng xếp hạng."
 				+ "\n   {pn} info [<uid> | <@tag> | <reply> | <để trống>]: xem thông tin xếp hạng của bạn hoặc người khác."
 				+ "\n   {pn} reset: reset bảng xếp hạng (chỉ admin bot).",
-			en: "  {pn} [4 | 5 | 6] [single | multi]: create a new game, with:"
-				+ "\n    4 5 6 is the number of digits of the number to guess, default is 4."
-				+ "\n    single | multi is the game mode, single is 1 player, multi is multi player, default is single."
-				+ "\n   Example:"
-				+ "\n    {pn}"
-				+ "\n    {pn} 4 single"
-				+ "\n"
-				+ "\n   How to play: the player replies to the message of the bot with the following rules:"
-				+ "\n   You have " + rows.map(item => `${item.row} times (${item.col} numbers)`).join(", ") + "."
-				+ "\n   After each guess, you will get additional hints of the number of correct digits (shown on the left) and the number of correct digits (shown on the right)."
-				+ "\n   Note: The number is formed with digits from 0 to 9, each digit appears only once and the number can start with 0."
-				+ "\n\n   {pn} rank <page>: view the ranking."
-				+ "\n   {pn} info [<uid> | <@tag> | <reply> | <empty>]: view your or other's ranking information."
-				+ "\n   {pn} reset: reset the ranking (only admin bot)."
+			en: "  {pn} [4 | 5 | 6] [وحيد | متعدد]: إنشاء لعبة جديدة مع:\n    4 5 6 هو عدد أرقام الرقم المطلوب تخمينه، الافتراضي هو 4.\n    وحيد | المتعدد هو وضع اللعبة، واحد يكون 1 لاعب، متعدد هو متعدد اللاعبين، الافتراضي هو واحد.\n   مثال:\n    {pn}\n    {pn} 4 وحيد\n\n   كيف ألعب: يرد اللاعب على رسالة البوت بالقواعد التالية:\n   لديك 10 تخمينات (4 أرقام)، 12 تخمينًا (5 أرقام)، 15 تخمينًا (6 أرقام).\n   بعد كل تخمين، سوف تحصل على تلميحات إضافية لعدد الأرقام الصحيحة (كما هو موضح على اليسار) وعدد الأرقام الصحيحة (كما هو موضح على اليمين).\n   ملحوظة: يتكون الرقم من أرقام من 0 إلى 9، وكل رقم يظهر مرة واحدة فقط ويمكن أن يبدأ الرقم به 0."
+				+ "\n\n   {pn} رتبة <صفحة>: عرض الترتيب."
+				+ "\n   {pn} معلومات [<آيدي> | <@تاغ> | <رد> | <فارغ>]: عرض معلومات التصنيف الخاصة بك أو غيرها."
+				+ "\n   {pn} إعادة: إعادة تعيين الترتيب (فقط المشرف بوت)."
 		}
 	},
 
@@ -85,29 +69,29 @@ module.exports = {
 			loss: "🤦‍♂️ | Bạn đã thua, số đúng là %1."
 		},
 		en: {
-			charts: "🏆 | Ranking:\n%1",
-			pageInfo: "Page %1/%2",
-			noScore: "⭕ | There is no one who has scored.",
-			noPermissionReset: "⚠️ | You do not have permission to reset the ranking.",
-			notFoundUser: "⚠️ | Could not find user with id %1 in the ranking.",
-			userRankInfo: "🏆 | Ranking information:\nName: %1\nScore: %2\nNumber of games: %3\nNumber of wins: %4\n%5\nNumber of losses: %6\nWin rate: %7%\nTotal play time: %8",
-			digits: "%1 digits: %2",
-			resetRankSuccess: "✅ | Reset the ranking successfully.",
-			invalidCol: "⚠️ | Please enter the number of digits of the number to guess is 4, 5 or 6",
-			invalidMode: "⚠️ | Please enter the game mode is single or multi",
-			created: "✅ | Create game successfully.",
-			gameName: "GUESS NUMBER GAME",
-			gameGuide: "⏳ | How to play:\nYou have %1 guesses.\nAfter each guess, you will get additional hints of the number of correct digits (shown on the left) and the number of correct digits (shown on the right).",
-			gameNote: "📄 | Note:\nThe number is formed with digits from 0 to 9, each digit appears only once and the number can start with 0.",
-			replyToPlayGame: "🎮 | Reply to the message below with the image of %1 numbers you guess to play the game.",
-			invalidNumbers: "⚠️ | Please enter %1 numbers you want to guess",
-			win: "🎉 | Congratulations you guessed the number %1 after %2 guesses and received %3 bonus points.",
-			loss: "🤦‍♂️ | You lost, the correct number is %1."
+			charts: "🏆 | تصنيف:\n%1",
+			pageInfo: "صفحة %1/%2",
+			noScore: "⭕ | لا يوجد أحد الذي سجل.",
+			noPermissionReset: "⚠️ | ليس لديك الإذن لإعادة ضبط الترتيب.",
+			notFoundUser: "⚠️ | لا يمكن العثور على المستخدم مع الآيدي %1 في الترتيب.",
+			userRankInfo: "🏆 | معلومات الترتيب:\nالإسم: %1\nنتيجة: %2\nعدد الألعاب: %3\nعدد الانتصارات: %4\n%5\nعدد الخسائر: %6\nتقييم الفوز: %7%\nإجمالي وقت اللعب: %8",
+			digits: "%1 أرقام: %2",
+			resetRankSuccess: "✅ | إعادة تعيين الترتيب بنجاح.",
+			invalidCol: "⚠️ | الرجاء إدخال عدد أرقام الرقم لتخمينه 4, 5 أو 6",
+			invalidMode: "⚠️ | الرجاء إدخال وضع اللعبة فردي أو متعدد",
+			created: "✅ | تم إنشاء اللعبة بنجاح.",
+			gameName: "لعبة تخمين الأرقام",
+			gameGuide: "⏳ | كيف ألعب:\nلديك %1 من التخمينات.\nبعد كل تخمين، سوف تحصل على تلميحات إضافية لعدد الأرقام الصحيحة (كما هو موضح على اليسار) وعدد الأرقام الصحيحة (كما هو موضح على اليمين).",
+			gameNote: "📄 | ملحوظة:\nيتكون الرقم من أرقام من 0 إلى 9، وكل رقم يظهر مرة واحدة فقط ويمكن أن يبدأ الرقم به 0.",
+			replyToPlayGame: "🎮 | قم بالرد على الرسالة أدناه بالصورة %1 الأرقام التي تخمنها للعب اللعبة.",
+			invalidNumbers: "⚠️ | تفضل أدخل %1 الأرقام التي تريد تخمينها",
+			win: "🎉 | مبروك لقد خمنت الرقم %1 بعد %2 التخمينات وحصلت %3 نقاط المكافأة.",
+			loss: "🤦‍♂️ | لقد خسرت، الرقم الصحيح هو %1."
 		}
 	},
 
 	onStart: async function ({ message, event, getLang, commandName, args, globalData, usersData, role }) {
-		if (args[0] == "rank") {
+		if (args[0] == "مستوى") {
 			const rankGuessNumber = await globalData.get("rankGuessNumber", "data", []);
 			if (!rankGuessNumber.length)
 				return message.reply(getLang("noScore"));
@@ -129,12 +113,12 @@ module.exports = {
 			const medals = ["🥇", "🥈", "🥉"];
 			const rankGuessNumberText = rankGuessNumberHandle.map((item, index) => {
 				const medal = medals[index] || index + 1;
-				return `${medal} ${item.userName} - ${item.winNumber} wins - ${item.lossNumber} losses`;
+				return `${medal} ${item.userName} - ${item.winNumber} مرات الفوز - ${item.lossNumber} مرات الخسارة`;
 			}).join("\n");
 
 			return message.reply(getLang("charts", rankGuessNumberText || getLang("noScore")) + "\n" + getLang("pageInfo", page, Math.ceil(rankGuessNumber.length / maxUserOnePage)));
 		}
-		else if (args[0] == "info") {
+		else if (args[0] == "معلومات") {
 			const rankGuessNumber = await globalData.get("rankGuessNumber", "data", []);
 			let targetID;
 			if (Object.keys(event.mentions).length)
@@ -162,7 +146,7 @@ module.exports = {
 			const playTime = convertTime(userDataGuessNumber.wins.reduce((a, b) => a + b.timeSuccess, 0) + userDataGuessNumber.losses.reduce((a, b) => a + b.timeSuccess, 0));
 			return message.reply(getLang("userRankInfo", userName, pointsReceived, playNumber, winNumber, Object.keys(winInfo).map(item => `  + ${getLang("digits", item, winInfo[item])}`).join("\n"), lossNumber, winRate, playTime));
 		}
-		else if (args[0] == "reset") {
+		else if (args[0] == "إعادة") {
 			if (role < 2)
 				return message.reply(getLang("noPermissionReset"));
 			await globalData.set("rankGuessNumber", [], "data");
