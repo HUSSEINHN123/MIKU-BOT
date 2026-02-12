@@ -5,15 +5,15 @@ const fs = require("fs")
 
 module.exports = {
  config: {
- name: "toilet",
+ name: "مرحاض",
  aliases: ["toilet"],
  version: "1.0",
  author: "Upen Basnet",
  countDown: 5,
  role: 0,
- shortDescription: "face on toilet",
+ shortDescription: "وجه في مرحاض",
  longDescription: "",
- category: "fun",
+ category: "متعة",
  guide: "{pn}"
  },
 
@@ -21,13 +21,13 @@ module.exports = {
 
  onStart: async function ({ message, event, args }) {
  const mention = Object.keys(event.mentions);
- if (mention.length == 0) return message.reply("Please mention someone");
+ if (mention.length == 0) return message.reply("⁉️ | المرجو عمل منشن او رد لمن تريد وجهه في المرحاض");
  else if (mention.length == 1) {
  const one = event.senderID, two = mention[0];
- bal(one, two).then(ptth => { message.reply({ body: "You Deserve This Place🤣", attachment: fs.createReadStream(ptth) }) })
+ bal(one, two).then(ptth => { message.reply({ body: "هذا المكان يناسبك يا وجه المرحاض 😂🤣", attachment: fs.createReadStream(ptth) }) })
  } else {
  const one = mention[1], two = mention[0];
- bal(one, two).then(ptth => { message.reply({ body: "You Deserve This Place🤣", attachment: fs.createReadStream(ptth) }) })
+ bal(one, two).then(ptth => { message.reply({ body: "هذا المكان يناسبك يا وجه المرحاض 😂🤣", attachment: fs.createReadStream(ptth) }) })
  }
  }
 
