@@ -6,13 +6,13 @@ const baseApiUrl = async () => {
 
 module.exports = {
     config: {
-        name: "dalle3",
+        name: "ديل",
         version: "1.1",
         author: "Rakib Adil",
         role: 0,
-        description: "generate a image using dalle3 Ai",
-        guide: "{pn}dalle3 <prompt>",
-        category: "Ai",
+        description: "توليد الصور بإستخدام dalle3 Ai",
+        guide: "{pn}ديل برومبت",
+        category: "ذكاء",
         countDown: 10
     },
     onStart: async function ({ api, event, args}) {
@@ -42,7 +42,7 @@ module.exports = {
             
             api.unsendMessage(loadMsg.messageID);
 
-            await api.sendMessage({ body: `Here is your genetated Image ${prompt} \n author: 𝙍𝙖𝙠𝙞𝙗 𝘼𝙙𝙞𝙡`, 
+            await api.sendMessage({ body: `✔️ | تـم تـولـيـد الـصـورة بـنـجـاح \n📋 | الـبـرومـبـت : ${prompt}`, 
             attachment: await global.utils.getStreamFromURL(imageUrl, `image.${ext}`) 
         }, event.threadID, event.messageID);
 
