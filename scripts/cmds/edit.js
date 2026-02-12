@@ -4,22 +4,22 @@ const path = require("path");
 
 module.exports = {
   config: {
-    name: "edit",
+    name: "تعديل",
     aliases: ["nanobanana"],
     version: "1.0.4",
     author: "CYBER ULLASH",
     countDown: 30,
     role: 0,
-    shortDescription: "Edit image using NanoBanana API",
-    category: "AI",
+    shortDescription: "تعديل الصور باستخدام الءكاء الاصطناعي نانو بنانا",
+    category: "ذكاء",
     guide: {
-      en: "{pn} <text> (reply to an image)",
+      en: "{pn} <نص> (رد على صورة)",
     },
   },
 
   onStart: async function ({ message, event, args, api }) {
     const prompt = args.join(" ");
-    if (!prompt) return message.reply("⚠️ 𝐏𝐥𝐞𝐚𝐬𝐞 𝐩𝐫𝐨𝐯𝐢𝐝𝐞 𝐬𝐨𝐦𝐞 𝐭𝐞𝐱𝐭 𝐟𝐨𝐫 𝐭𝐡𝐞 𝐢𝐦𝐚𝐠𝐞.");
+    if (!prompt) return message.reply("⚠️ | اضف الوصف المراد تعديله في الصورة.");
 
     api.setMessageReaction("☣️", event.messageID, () => {}, true);
 
@@ -31,7 +31,7 @@ module.exports = {
         !event.messageReply.attachments[0].url
       ) {
         api.setMessageReaction("⚠️", event.messageID, () => {}, true);
-        return message.reply("⚠️ 𝐏𝐥𝐞𝐚𝐬𝐞 𝐫𝐞𝐩𝐥𝐲 𝐭𝐨 𝐚𝐧 𝐢𝐦𝐚𝐠𝐞.");
+        return message.reply("⚠️ | رد على صورة ثم اكتب التعديلات.");
       }
 
       const imgUrl = event.messageReply.attachments[0].url;
@@ -44,7 +44,7 @@ module.exports = {
 
       if (!res.data || res.data.status !== true || !res.data.image) {
         api.setMessageReaction("⚠️", event.messageID, () => {}, true);
-        return message.reply("❌ 𝐀𝐏𝐈 𝐄𝐫𝐫𝐨𝐫: 𝐈𝐦𝐚𝐠𝐞 𝐝𝐚𝐭𝐚 𝐧𝐨𝐭 𝐫𝐞𝐜𝐞𝐢𝐯𝐞𝐝.");
+        return message.reply("❌ | 𝐀𝐏𝐈 𝐄𝐫𝐫𝐨𝐫: لم يتم استقبال بيانات الصورة.");
       }
 
       const finalImageURL = res.data.image;
