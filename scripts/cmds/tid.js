@@ -1,15 +1,15 @@
 module.exports = {
 	config: {
-		name: "tid",
+		name: "تيد",
 		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
 		description: {
 			vi: "Xem id nhóm chat của bạn",
-			en: "View threadID of your group chat"
+			en: "قم بالتطلع على ايدي المجموعة"
 		},
-		category: "info",
+		category: "معلومات",
 		guide: {
 			en: "{pn}"
 		}
