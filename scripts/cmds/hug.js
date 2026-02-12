@@ -3,14 +3,14 @@ const { createCanvas, loadImage } = require("canvas");
 
 module.exports = {
   config: {
-    name: "hug",
+    name: "حضن",
     version: "1.1.0",
     author: "Rakib Adil",
     countDown: 5,
     role: 0,
-    longDescription: "{p}hug @mention someone you want to hug that person 🫂",
-    category: "funny",
-    guide: "{p}hug and mention someone you want to hug 🥴",
+    longDescription: "{p}حضن @منشن شحص ما تريد حضن 🫂",
+    category: "متعة",
+    guide: "{p}حشن ومنشن شخص تريد حضنه 🥴",
     usePrefix: true,// you can use this command without prefix, juat set it to false.
     premium: false,
     notes: "If you change the author then the command will not work and not usable"
@@ -32,7 +32,7 @@ module.exports = {
     }else if(event.type === "message_reply") {
         two = event.messageReply.senderID;
     }else{
-        message.reply("please mention or reply someone to hug")
+        message.reply("⁉️ | منشن حد او رد على رسالة")
     };
 
     try {
@@ -70,7 +70,7 @@ module.exports = {
 
       message.reply(
         {
-          body: "🫂 A warm hug 💞",
+          body: "🫂 حــضــن دافــئ 💞",
           attachment: fs.createReadStream(outputPath)
         },
         () => fs.unlinkSync(outputPath)
