@@ -7,7 +7,7 @@ const fs = require("fs");
 const path = require("path");
 const os = require("os");
 
-moment.tz.setDefault("Asia/Dhaka");
+moment.tz.setDefault("Africa/Casablanca");
 
 module.exports = {
   config: {
