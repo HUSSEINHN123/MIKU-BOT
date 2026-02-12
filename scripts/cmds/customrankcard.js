@@ -5,20 +5,24 @@ const { uploadImgbb } = global.utils;
 
 module.exports = {
 	config: {
-		name: "customrankcard",
+		name: "شكل_بطاقةالمستوى",
 		aliases: ["crc", "customrank"],
-		version: "1.12",
+		version: "1.11",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
-		description: {
-			vi: "Thiết kế thẻ rank theo ý bạn",
-			en: "Design rank card by your own"
+		shortDescription: {
+			vi: "Thiết kế thẻ rank",
+			en: "تصميم بطاقة التصنيف"
 		},
-		category: "rank",
+		longDescription: {
+			vi: "Thiết kế thẻ rank theo ý bạn",
+			en: "تصميم بطاقة التصنيف بنفسك"
+		},
+		category: "مستوى",
 		guide: {
 			vi: {
-				body: "   {pn} [maincolor | subcolor | linecolor | expbarcolor | progresscolor | alphasubcolor | textcolor | namecolor | expcolor | rankcolor | levelcolor | reset] <value>"
+				body: "   {pn} [لون_الخلفية |  | لون_الخط | لون_الexp | لون التقدم | لون_الأحرف _الفرعية | textcolor | إسم_اللون | لون_الexp | لون_المستوى | لون_المستوى | إعادة] <قيمة>"
 					+ "\n   Trong đó: "
 					+ "\n  + maincolor | background <value>: background chính của thẻ rank"
 					+ "\n  + subcolor <value>: background phụ"
@@ -45,26 +49,26 @@ module.exports = {
 				}
 			},
 			en: {
-				body: "   {pn} [maincolor | subcolor | linecolor | progresscolor | alphasubcolor | textcolor | namecolor | expcolor | rankcolor | levelcolor | reset] <value>"
-					+ "\n   In which: "
-					+ "\n  + maincolor | background <value>: main background of rank card"
-					+ "\n  + subcolor <value>: sub background"
-					+ "\n  + linecolor <value>: color of line between main and sub background"
-					+ "\n  + expbarcolor <value>: color of exp bar"
-					+ "\n  + progresscolor <value>: color of current exp bar"
-					+ "\n  + alphasubcolor <value>: opacity of sub background (from 0 -> 1)"
-					+ "\n  + textcolor <value>: color of text (hex color or rgba)"
-					+ "\n  + namecolor <value>: color of name"
-					+ "\n  + expcolor <value>: color of exp"
-					+ "\n  + rankcolor <value>: color of rank"
-					+ "\n  + levelcolor <value>: color of level"
-					+ "\n    • <value> can be hex color, rgb, rgba, gradient (each color is separated by space) or image url"
-					+ "\n    • If you want to use gradient, please enter many colors separated by space"
-					+ "\n   {pn} reset: reset all to default"
-					+ "\n   Example:"
-					+ "\n    {pn} maincolor #fff000"
-					+ "\n    {pn} subcolor rgba(255,136,86,0.4)"
-					+ "\n    {pn} reset",
+				body: "   {pn} [لون_الخلفية |  | لون_الخط | لون_الexp | لون التقدم | لون_الأحرف _الفرعية | textcolor | إسم_اللون | لون_الexp | لون_المستوى | لون_المستوى | إعادة] <قيمة>"
+					+ "\n   في ماتتمنى: "
+					+ "\n  + maincolor | الخلفية <قيمة>: الخلفية الرئيسية لبطاقة التصنيف"
+					+ "\n  + لون فرعي <قيمة>: الخلفية الفرعية"
+					+ "\n  + لون الخط <قيمة>: لون الخط بين الخلفية الرئيسية والفرعية"
+					+ "\n  + expلون الشريط <قيمة>: لون خط ال exp"
+					+ "\n  + لون التقدم <قيمة>: لون خط ال exp"
+					+ "\n  + ألفا اللون الفرعي <قيمة>: عتامة الخلفية الفرعية (من 0 -> 1)"
+					+ "\n  + لون الخط <قيمة>: لون النص (اللون السداسي أو rgba)"
+					+ "\n  + لون الاسم <قيمة>: لون الاسم"
+					+ "\n  + لون ال exp <قيمة>: لون ال exp"
+					+ "\n  + لون_التصنيف <قيمة>: لون الرتبة"
+					+ "\n  + لون_المستوى <قيمة>: لون المستوى"
+					+ "\n    • <قيمة> يمكن أن يكون لونًا سداسيًا عشريًا، أو rgb، أو rgba، أو متدرجًا (يتم فصل كل لون بمسافة) أو عنوان url للصورة"
+					+ "\n    • إذا كنت تريد استخدام التدرج، يرجى إدخال العديد من الألوان مفصولة بمسافة"
+					+ "\n   {pn} إعادة: إعادة تعيين الكل إلى الوضع الافتراضي"
+					+ "\n   مثال:"
+					+ "\n    {pn} لون_الخلفية #fff000"
+					+ "\n    {pn} لون_الفرعي rgba(255,136,86,0.4)"
+					+ "\n    {pn} إعادة",
 				attachment: {
 					[`${__dirname}/assets/guide/customrankcard_1.jpg`]: "https://i.ibb.co/BZ2Qgs1/image.png",
 					[`${__dirname}/assets/guide/customrankcard_2.png`]: "https://i.ibb.co/wy1ZHHL/image.png"
@@ -84,13 +88,13 @@ module.exports = {
 			invalidAlpha: "Vui lòng chọn chỉ số trong khoảng từ 0 -> 1"
 		},
 		en: {
-			invalidImage: "Invalid image url, please choose an url with image destination (jpg, jpeg, png, gif), you can upload image to https://imgbb.com/ and choose \"get direct link\" to get image url",
-			invalidAttachment: "Invalid attachment, please choose an image file",
-			invalidColor: "Invalid color code, please choose a hex color code (6 digits) or rgba color code",
-			notSupportImage: "Url image is not supported with option \"%1\"",
-			success: "Your changes have been saved, here is a preview",
-			reseted: "All settings have been reset to default",
-			invalidAlpha: "Please choose a number from 0 -> 1"
+			invalidImage: "عنوان رابط الصورة غير صالح، يرجى اختيار عنوان رابط مع وجهة الصورة (jpg, jpeg, png, gif), يمكنك تحميل الصورة إلى https://imgbb.com/ و اختار \"الحصول على الرابط المباشر\" للحصول على عنوان رابط للصورة",
+			invalidAttachment: "المرفق غير صالح، الرجاء اختيار ملف صورة",
+			invalidColor: "رمز اللون غير صالح، يرجى اختيار رمز اللون السداسي (6 أرقام) أو رمز اللون rgba",
+			notSupportImage: "صورة عنوان رابط غير مدعوم مع الخيار \"%1\"",
+			success: "لقد تم حفظ التغييرات التي قمت بها، وهنا معاينة",
+			reseted: "كل البيانات تكت إعادتها بنجاح ✅",
+			invalidAlpha: "الرجاء اختيار رقم من 0 -> 1"
 		}
 	},
 
@@ -141,37 +145,37 @@ module.exports = {
 				return message.reply(getLang("notSupportImage", key));
 
 			switch (key) {
-				case "maincolor":
+				case "لون_الخلفية":
 				case "background":
 				case "bg":
 					value == "reset" ? delete customRankCard.main_color : customRankCard.main_color = value;
 					break;
-				case "subcolor":
+				case "اللون_الفرعي":
 					value == "reset" ? delete customRankCard.sub_color : customRankCard.sub_color = value;
 					break;
-				case "linecolor":
+				case "لون_الخط":
 					value == "reset" ? delete customRankCard.line_color : customRankCard.line_color = value;
 					break;
-				case "progresscolor":
+				case "لون_التقدم":
 					value == "reset" ? delete customRankCard.exp_color : customRankCard.exp_color = value;
 					break;
-				case "expbarcolor":
+				case "لون_الxp":
 					value == "reset" ? delete customRankCard.expNextLevel_color : customRankCard.expNextLevel_color = value;
 					break;
-				case "textcolor":
+				case "لون_النص":
 					value == "reset" ? delete customRankCard.text_color : customRankCard.text_color = value;
 					break;
-				case "namecolor":
+				case "لون_المستوى":
 					value == "reset" ? delete customRankCard.name_color : customRankCard.name_color = value;
 					break;
-				case "rankcolor":
+				case "لون_المستوى":
 					value == "reset" ? delete customRankCard.rank_color : customRankCard.rank_color = value;
 					break;
-				case "levelcolor":
+				case "لون_المستوى":
 				case "lvcolor":
 					value == "reset" ? delete customRankCard.level_color : customRankCard.level_color = value;
 					break;
-				case "expcolor":
+				case "لون_التعبير":
 					value == "reset" ? delete customRankCard.exp_text_color : customRankCard.exp_text_color = value;
 					break;
 			}
