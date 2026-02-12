@@ -13,7 +13,7 @@ const langsSupported = [
 
 module.exports = {
 	config: {
-		name: "emojimean",
+		name: "معنى_إيموجي",
 		alias: ["em", "emojimeaning", "emojimean"],
 		version: "1.4",
 		author: "NTKhang",
@@ -21,12 +21,12 @@ module.exports = {
 		role: 0,
 		description: {
 			vi: "Tìm nghĩa của emoji",
-			en: "Find the meaning of emoji"
+			en: "قم بإيجاد المعنى لإيموجي معين"
 		},
-		category: "wiki",
+		category: "خدمات",
 		guide: {
 			vi: "   {pn} <emoji>: Tìm nghĩa của emoji",
-			en: "   {pn} <emoji>: Find the meaning of emoji"
+			en: "   {pn} <معنى_إيموجي>: قم بإيجاد المعنى من إيموجي ما"
 		}
 	},
 
@@ -40,12 +40,12 @@ module.exports = {
 			notHave: "Không có"
 		},
 		en: {
-			missingEmoji: "⚠️ You have not entered an emoji",
-			meaningOfEmoji: "📌 Meaning of emoji %1:\n\n📄 First meaning: %2\n\n📑 More meaning: %3%4\n\n📄 Shortcode: %5\n\n©️ Source: %6\n\n📺 Below are images of the emoji displayed on some platforms:",
-			meaningOfWikipedia: "\n\n📝 React to this message to see the meaning \"%1\" from Wikipedia",
-			meanOfWikipedia: "📑 Meaning of \"%1\" on Wikipedia:\n%2",
-			manyRequest: "⚠️ The bot has sent too many requests, please try again later",
-			notHave: "Not have"
+			missingEmoji: "⚠️ | أنت لم تقم بإدخال الإيموجي بعد",
+			meaningOfEmoji: "📌 معنى الإيموجي  %1:\n\n📄 المعنى من الإيموحي : %2\n\n📑 مزيد من الشرحان : %3%4\n\n📄 الرمز القصير : %5\n\n©️ المصدر : %6\n\n📺 فيما يلي صور للرموز التعبيرية المعروضة على بعض المنصات :",
+			meaningOfWikipedia: "\n\n📝 | قم بالتفاعل مع هذه الرسالة  من أجل المزيد من التفاصيل حول معنى الإيموجي \"%1\" من ويكيبيديا",
+			meanOfWikipedia: "📑 معنى  \"%1\" على ويكيبيديا :\n%2",
+			manyRequest: "⚠️ | قد أرسل البوت الكثير من الطلبات يرحل العودة لاحقا ",
+			notHave: "آسف لا أملك 🥺"
 		}
 	},
 
@@ -55,7 +55,7 @@ module.exports = {
 			return message.reply(getLang("missingEmoji"));
 		const threadData = await threadsData.get(event.threadID);
 		let myLang = threadData.data.lang ? threadData.data.lang : global.GoatBot.config.language;
-		myLang = langsSupported.includes(myLang) ? myLang : "en";
+		myLang = langsSupported.includes(myLang) ? myLang : "ar";
 
 		let getMeaning;
 		try {
@@ -199,8 +199,8 @@ module.exports = {
 };
 
 async function getEmojiMeaning(emoji, lang) {
-	const url = `https://www.emojiall.com/${lang}/emoji/${encodeURI(emoji)}`;
-	const urlImages = `https://www.emojiall.com/${lang}/image/${encodeURI(emoji)}`;
+	const url = `https://www.emojiall.com/ar/emoji/${encodeURI(emoji)}`;
+	const urlImages = `https://www.emojiall.com/ar/image/${encodeURI(emoji)}`;
 
 	const { data } = await axios.get(url);
 	const { data: dataImages } = await axios.get(urlImages);
