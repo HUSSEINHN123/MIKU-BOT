@@ -65,7 +65,9 @@ module.exports = {
       msg += ``;
       msg += `\n╭─────✰\n│ ♥︎╣[❉ᗰIKᑌ ᗩI❉]╠♥︎\n╰────────────✰`; 
 
- 				const helpListImages = [ "https://files.catbox.moe/utby7g.jpeg" ];
+ 				const helpListImages = [ "https://i.ibb.co/NBKQ3YH/7173-miku-nakano.jpg",
+                                  "https://i.ibb.co/nMnqPBL8/miku-nakano-header-by-calmwrld-deosd1x-fullview.jpg",
+                                  "https://i.ibb.co/v62Wc4Tw/miku-nakano-by-ayayotsuba-ded3rp7-fullview.jpg"];
 
 
       const helpListImage = helpListImages[Math.floor(Math.random() * helpListImages.length)];
