@@ -8,18 +8,18 @@ const baseApiUrl = async () => {
 };
 module.exports = {
   config: {
-    name: "sing",
+    name: "اغنية",
     version: "1.1.5",
-    aliases: [ "music", "play"],
+    aliases: ["شغلي"],
     author: "dipto",
     countDown: 5,
     role: 0,
     description: {
-      en: "Download audio from YouTube"
+      en: "تشغيل الاغاني نن يوتيوب"
     },
-    category: "media",
+    category: "وسائط",
     guide: {
-      en: "{pn} [<song name>|<song link>]:"+ "\n   Example:"+"\n{pn} chipi chipi chapa chapa"
+      en: "{pn} [<اسم الاغنية>|<رابط يوتيوب للاغنية>]:"+ "\n   Example:"+"\n{pn} chipi chipi chapa chapa"
     }
   },
   onStart: async ({api,args, event,commandName, message }) =>{
@@ -45,10 +45,10 @@ if (urlYtb) {
     try {
       result = ((await axios.get(`${await baseApiUrl()}/ytFullSearch?songName=${keyWord}`)).data).slice(0, maxResults);
     } catch (err) {
-      return api.sendMessage("❌ An error occurred:"+err.message,event.threadID,event.messageID);
+      return api.sendMessage("❌ | حدث خطا:"+err.message,event.threadID,event.messageID);
     }
     if (result.length == 0)
-      return api.sendMessage("⭕ No search results match the keyword:"+ keyWord,event.threadID,event.messageID);
+      return api.sendMessage("⭕ | لم يتم ايجاد اي اغنية بالنسبة للكلمات البحث:"+ keyWord,event.threadID,event.messageID);
     let msg = "";
     let i = 1;
     const thumbnails = [];
@@ -78,17 +78,17 @@ global.GoatBot.onReply.set(info.messageID, {
   const { data: { title, downloadLink ,quality} } = await axios.get(`${await baseApiUrl()}/ytDl3?link=${idvideo}&format=mp3`);
     await api.unsendMessage(Reply.messageID)
         await  api.sendMessage({
-          body: `• Title: ${title}\n• Quality: ${quality}`,
+          body: `• الـعـنـوان: ${title}\n• الـجـودة: ${quality}`,
           attachment: await dipto(downloadLink,'audio.mp3')
         },event.threadID ,
        ()=>fs.unlinkSync('audio.mp3')
       ,event.messageID)
     } else {
-      api.sendMessage("Invalid choice. Please enter a number between 1 and 6.",event.threadID,event.messageID);
+      api.sendMessage("⚠️ | اختيار غير صالح. يرجى إدخال رقم بين 1 و 6.",event.threadID,event.messageID);
     }
     } catch (error) {
       console.log(error);
-      api.sendMessage("⭕ Sorry, audio size was less than 26MB\n"+downloadLink,event.threadID,event.messageID)
+      api.sendMessage("⭕ | آسفة , يجب ان لا يتجاوز حجم الأغنية 26 ميغابايت\n"+downloadLink,event.threadID,event.messageID)
     }   
  }
 };
