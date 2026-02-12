@@ -4,8 +4,8 @@ const request = require("request");
 
 module.exports = {
   config: {
-    name: "غادري",
-    aliases: ["اخرجي","out"],
+    name: "لاست",
+    aliases: ["last"],
     version: "2.0", 
     author: "Vex_Kshitiz",
     countDown: 5,
