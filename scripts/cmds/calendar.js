@@ -7,18 +7,18 @@ const cacheDirectory = path.join(__dirname, 'cache');
 
 module.exports = {
   config: {
-    name: "calendar",
+    name: "تقويم",
     version: "4.0",
     author: "Ew'r Saim",
-    shortDescription: "🗓️ Stylish English Calendar — No API",
-    longDescription: "Fully local calendar with proper weekdays for Asia/Dhaka.",
-    category: "utility",
-    guide: { en: "{p}calendar" }
+    shortDescription: "تقويم التواريخ",
+    longDescription: "تقويم لايام الاسبوع حسل موقع محدد",
+    category: "خدمات",
+    guide: { en: "{p}تقويم" }
   },
 
   onStart: async function ({ api, event }) {
     try {
-      const now = moment().tz('Asia/Dhaka');
+      const now = moment().tz('Africa/Casablanca');
       const year = now.year();
       const month = now.month() + 1; // 1–12
       const monthName = now.format('MMMM');
@@ -28,7 +28,7 @@ module.exports = {
 
       const days = Array.from({ length: daysInMonth }, (_, i) => {
         const d = i + 1;
-        const m = moment.tz(`${year}-${month}-${d}`, 'YYYY-M-D', 'Asia/Dhaka');
+        const m = moment.tz(`${year}-${month}-${d}`, 'YYYY-M-D', 'Africa/Casablanca');
         return {
           ad: String(d),
           weekday: m.format('ddd'),
@@ -74,7 +74,7 @@ module.exports = {
       const startX=48, startY=120;
 
       // Weekday headers
-      const weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      const weekdays = ['الأحد','الإثتين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
       const emoji = ['☀️','','','','','','🌙'];
       ctx.font='bold 14px Arial'; ctx.fillStyle='#fff';
       ctx.shadowColor='black'; ctx.shadowBlur=4;
@@ -111,8 +111,7 @@ module.exports = {
       // Save & Send
       const imgBuf = canvas.toBuffer();
       await fs.promises.mkdir(cacheDirectory, { recursive: true });
-      await fs.promises.writeFile(path.join(cacheDirectory,'english_calendar.png'), imgBuf);
-      api.sendMessage({ attachment: fs.createReadStream(path.join(cacheDirectory,'english_calendar.png')) }, event.threadID, event.messageID);
+      await fs.promises.writeFile(path.join(cacheDirectory,'english_calendtachment: fs.createReadStream(path.join(cacheDirectory,'english_calendar.png')) }, event.threadID, event.messageID);
 
     } catch (e) {
       console.error(e);
