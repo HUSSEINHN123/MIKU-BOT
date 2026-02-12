@@ -3,18 +3,22 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 module.exports = {
 	config: {
-		name: "adduser",
-		version: "1.5",
+		name: "أضيفي",
+		version: "1.4",
 		author: "NTKhang",
 		countDown: 5,
 		role: 1,
-		description: {
-			vi: "Thêm thành viên vào box chat của bạn",
-			en: "Add user to box chat of you"
+		shortDescription: {
+			vi: "Thêm thành viên vào box chat",
+			en: "إضافة مستخدم إلى المجموعة"
 		},
-		category: "box chat",
+		longDescription: {
+			vi: "Thêm thành viên vào box chat của bạn",
+			en: "أضف مستخدمًا إلى  الشات الخاص بك"
+		},
+		category: "المجموعة",
 		guide: {
-			en: "   {pn} [link profile | uid]"
+			en: "   {pn} [ملف تعريف الارتباط | آيدي]"
 		}
 	},
 
@@ -30,14 +34,14 @@ module.exports = {
 			cannotAddUser: "Bot bị chặn tính năng hoặc người dùng này chặn người lạ thêm vào nhóm"
 		},
 		en: {
-			alreadyInGroup: "Already in group",
-			successAdd: "- Successfully added %1 members to the group",
-			failedAdd: "- Failed to add %1 members to the group",
-			approve: "- Added %1 members to the approval list",
-			invalidLink: "Please enter a valid facebook link",
-			cannotGetUid: "Cannot get uid of this user",
-			linkNotExist: "This profile url does not exist",
-			cannotAddUser: "Bot is blocked or this user blocked strangers from adding to the group"
+			alreadyInGroup: "بالفعل في المجموعة",
+			successAdd: "- أضيف بنجاح %1 كعضو إلى المجموعة",
+			failedAdd: "- فشلت إضافة %1 كعضو إلى المجموعة",
+			approve: "- تمت إضافة %1 كعضو إلى قائمة الموافقة",
+			invalidLink: "الرجاء إدخال رابط بروفايل صالح",
+			cannotGetUid: "لا يمكن الحصول على الآيدي لهذا المستخدم",
+			linkNotExist: "عنوان URL للملف الشخصي هذا غير موجود",
+			cannotAddUser: "تم حظر البوت أو قام هذا المستخدم بحظر الغرباء من الإضافة إلى المجموعة"
 		}
 	},
 
