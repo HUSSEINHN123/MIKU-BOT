@@ -1,22 +1,26 @@
 module.exports = {
 	config: {
-		name: "count",
-		version: "1.3",
+		name: "أحسب",
+		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
-		description: {
-			vi: "Xem số lượng tin nhắn của tất cả thành viên hoặc bản thân (tính từ lúc bot vào nhóm)",
-			en: "View the number of messages of all members or yourself (since the bot joined the group)"
+		shortDescription: {
+			vi: "Xem tin nhắn nhóm",
+			en: "عرض الرسائل الجماعية"
 		},
-		category: "box chat",
+		longDescription: {
+			vi: "Xem số lượng tin nhắn của tất cả thành viên hoặc bản thân (tính từ lúc bot vào nhóm)",
+			en: "عرض عدد الرسائل لجميع الأعضاء أو لنفسك (منذ أن انضم البوت إلى المجموعة)"
+		},
+		category: "المجموعة",
 		guide: {
 			vi: "   {pn}: dùng để xem số lượng tin nhắn của bạn"
 				+ "\n   {pn} @tag: dùng để xem số lượng tin nhắn của những người được tag"
 				+ "\n   {pn} all: dùng để xem số lượng tin nhắn của tất cả thành viên",
-			en: "   {pn}: used to view the number of messages of you"
-				+ "\n   {pn} @tag: used to view the number of messages of those tagged"
-				+ "\n   {pn} all: used to view the number of messages of all members"
+			en: "   {pn}: يستخدم لعرض عدد الرسائل الخاصة بك"
+				+ "\n   {pn} @تاغ: يستخدم لعرض عدد الرسائل الخاصة بتلك التي تم وضع علامة عليها"
+				+ "\n   {pn} الكل: يستخدم لعرض عدد الرسائل لجميع الأعضاء"
 		}
 	},
 
@@ -31,13 +35,13 @@ module.exports = {
 			invalidPage: "Số trang không hợp lệ"
 		},
 		en: {
-			count: "Number of messages of members:",
-			endMessage: "Those who do not have a name in the list have not sent any messages.",
-			page: "Page [%1/%2]",
-			reply: "Reply to this message with the page number to view more",
-			result: "%1 rank %2 with %3 messages",
-			yourResult: "You are ranked %1 and have sent %2 messages in this group",
-			invalidPage: "Invalid page number"
+			count: "عدد رسائل الأعضاء:",
+			endMessage: "أولئك الذين ليس لديهم اسم في القائمة لم يرسلوا أي رسائل.",
+			page: "صفحة [%1/%2]",
+			reply: "قم بالرد على هذه الرسالة برقم الصفحة لمشاهدة المزيد",
+			result: "%1 مستوى %2 مع %3 الرسائل",
+			yourResult: "لقد تم تصنيفك %1 وأرسلت %2 رسالة في هذه المجموعة",
+			invalidPage: "رقم الصفحة غير صالح"
 		}
 	},
 
@@ -52,7 +56,7 @@ module.exports = {
 				continue;
 			const charac = "️️️️️️️️️️️️️️️️️"; // This character is banned from facebook chat (it is not an empty string)
 			arraySort.push({
-				name: user.name.includes(charac) ? `Uid: ${user.userID}` : user.name,
+				name: user.name.includes(charac) ? `آيدي: ${user.userID}` : user.name,
 				count: user.count,
 				uid: user.userID
 			});
@@ -62,7 +66,7 @@ module.exports = {
 		arraySort.map(item => item.stt = stt++);
 
 		if (args[0]) {
-			if (args[0].toLowerCase() == "all") {
+			if (args[0].toLowerCase() == "الكل") {
 				let msg = getLang("count");
 				const endMessage = getLang("endMessage");
 				for (const item of arraySort) {
