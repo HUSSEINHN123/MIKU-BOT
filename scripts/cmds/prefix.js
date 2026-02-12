@@ -3,13 +3,13 @@ const { utils } = global;
 
 module.exports = {
 	config: {
-		name: "prefix",
+		name: "بادئة",
 		version: "1.4",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
 		description: "Thay đổi dấu lệnh của bot trong box chat của bạn hoặc cả hệ thống bot (chỉ admin bot)",
-		category: "config",
+		category: "النظام",
 		guide: {
 			vi: "   {pn} <new prefix>: thay đổi prefix mới trong box chat của bạn"
 				+ "\n   Ví dụ:"
@@ -17,14 +17,14 @@ module.exports = {
 				+ "\n\n   {pn} <new prefix> -g: thay đổi prefix mới trong hệ thống bot (chỉ admin bot)"
 				+ "\n   Ví dụ:"
 				+ "\n    {pn} # -g"
-				+ "\n\n   {pn} reset: thay đổi prefix trong box chat của bạn về mặc định",
-			en: "   {pn} <new prefix>: change new prefix in your box chat"
+				+ "\n\n   {pn} ضبط: thay đổi prefix trong box chat của bạn về mặc định",
+			en: "   {pn} <رمز جديد>: غير الرمز الجديد في جروبك"
 				+ "\n   Example:"
 				+ "\n    {pn} #"
-				+ "\n\n   {pn} <new prefix> -g: change new prefix in system bot (only admin bot)"
+				+ "\n\n   {pn} رمز جديد> -g: تغيير رمز نظام البوت (فقط المطور)"
 				+ "\n   Example:"
 				+ "\n    {pn} # -g"
-				+ "\n\n   {pn} reset: change prefix in your box chat to default"
+				+ "\n\n   {pn} إعادة : اعادة الرمز في بوتك الى الحالة الاولى"
 		}
 	},
 
@@ -39,13 +39,13 @@ module.exports = {
 			myPrefix: "🌐 Prefix của hệ thống: %1\n🛸 Prefix của nhóm bạn: %2"
 		},
 		en: {
-			reset: "Your prefix has been reset to default: %1",
-			onlyAdmin: "Only admin can change prefix of system bot",
-			confirmGlobal: "Please react to this message to confirm change prefix of system bot",
-			confirmThisThread: "Please react to this message to confirm change prefix in your box chat",
-			successGlobal: "Changed prefix of system bot to: %1",
-			successThisThread: "Changed prefix in your box chat to: %1",
-			myPrefix: "🌐 System prefix: %1\n🛸 Your box chat prefix: %2"
+			reset: "تمت إعادة تعيين بادئتك إلى الوضع الافتراضي: %1",
+			onlyAdmin: "لا يمكن تغيير بادئة نظام البوت إلا من قبل المطور.",
+			confirmGlobal: "يرجى التفاعل مع هذه الرسالة لتأكيد تغيير بادئة نظام البوت",
+			confirmThisThread: "يرجى الرد على هذه الرسالة لتأكيد تغيير البادئة في الجروب الخاص بك",
+			successGlobal: "تم تغيير بادئة نظام البوت إلى: %1",
+			successThisThread: "تم تغيير البادئة في الجروب الخاص بك إلى: %1",
+			myPrefix: "🌐 | رمـز الـنـظـام : %1\n📦 | رمـز مـجـمـوعـتـك : %2"
 		}
 	},
 
