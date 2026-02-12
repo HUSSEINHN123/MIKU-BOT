@@ -41,13 +41,13 @@ async function wrapText(ctx, text, maxWidth) {
 
 module.exports = {
   config: {
-    name: "hack",
+    name: "هاك",
     author: "MAHBUB ULLASH",
     countDown: 5,
     role: 0,
-    category: "fun",
+    category: "متعة",
     shortDescription: {
-      en: "Generates a 'hacking' image with the user's profile photo.",
+      en: "توليد 'اختراق' لصورة بروفايل مستخم ما.",
     },
   },
 
@@ -102,7 +102,7 @@ module.exports = {
 
       return api.sendMessage(
         {
-          body: "✅ 𝙎𝙪𝙘𝙘𝙚𝙨𝙨𝙛𝙪𝙡𝙡𝙮 𝙃𝙖𝙘𝙠𝙚𝙙 𝙏𝙝𝙞𝙨 𝙐𝙨𝙚𝙧!\nMy Lord, আইড়ি বাঁচাতে চাইলে ULL4SH বসকে তাড়াতাড়ি ইনবক্স দে!",
+          body: "✅ | تـم تـهـكـيـر هـذا الـمـسـتـخـدم بـنـجـاج",
           attachment: fs.createReadStream(pathImg),
         },
         event.threadID,
