@@ -16,7 +16,7 @@ module.exports = {
 			vi: "Thêm, xóa, sửa quyền admin",
 			en: "إضافة وإزالة وتحرير دور المسؤول"
 		},
-		category: "المالك",
+		category: "المطور",
 		guide: {
 			vi: '   {pn} [add | -a] <uid | @tag>: Thêm quyền admin cho người dùng'
 				+ '\n	  {pn} [remove | -r] <uid | @tag>: Xóa quyền admin của người dùng'
