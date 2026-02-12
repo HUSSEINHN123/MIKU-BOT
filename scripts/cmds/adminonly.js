@@ -1,69 +1,69 @@
-const fs = require("fs-extra");
-const { config } = global.GoatBot;
-const { client } = global;
-
 module.exports = {
 	config: {
-		name: "adminonly",
-		aliases: ["adonly", "onlyad", "onlyadmin"],
-		version: "1.5",
+		name: "تقييد",
+		aliases: ["فقط مشرفو المجموعة", "adboxonly", "adminboxonly"],
+		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
-		role: 2,
-		description: {
-			vi: "bật/tắt chế độ chỉ admin mới có thể sử dụng bot",
-			en: "turn on/off only admin can use bot"
+		role: 1,
+		shortDescription: {
+			vi: "bật/tắt chỉ admin box sử dụng bot",
+			en: "تشغيل/إيقاف  المطور فقط من يمكنه استخدام البوت"
 		},
-		category: "owner",
+		longDescription: {
+			vi: "bật/tắt chế độ chỉ quản trị của viên nhóm mới có thể sử dụng bot",
+			en: "تشغيل/إيقاف  المطور فقط من يمكنه استخدام البوت"
+		},
+		category: "المجموعة",
 		guide: {
-			vi: "   {pn} [on | off]: bật/tắt chế độ chỉ admin mới có thể sử dụng bot"
-				+ "\n   {pn} noti [on | off]: bật/tắt thông báo khi người dùng không phải là admin sử dụng bot",
-			en: "   {pn} [on | off]: turn on/off the mode only admin can use bot"
-				+ "\n   {pn} noti [on | off]: turn on/off the notification when user is not admin use bot"
+			en: "   {pn} [on | off]: bật/tắt chế độ chỉ quản trị viên nhóm mới có thể sử dụng bot"
+				+ "\n   {pn} noti [on | off]: bật/tắt thông báo khi người dùng không phải là quản trị viên nhóm sử dụng bot",
+			en: "   {pn} [تشغيل | إيقاف]: تشغيل/إيقاف الوضع، يمكن للمطور فقط استخدام تقييد"
+				+ "\n   {pn} إشعار [تشغيل | إيقاف]: قم بتشغيل/إيقاف تشغيل الإشعار عندما لا يكون البوت للإستخدام العام"
 		}
 	},
 
 	langs: {
 		vi: {
-			turnedOn: "Đã bật chế độ chỉ admin mới có thể sử dụng bot",
-			turnedOff: "Đã tắt chế độ chỉ admin mới có thể sử dụng bot",
-			turnedOnNoti: "Đã bật thông báo khi người dùng không phải là admin sử dụng bot",
-			turnedOffNoti: "Đã tắt thông báo khi người dùng không phải là admin sử dụng bot"
+			turnedOn: "Đã bật chế độ chỉ quản trị viên nhóm mới có thể sử dụng bot",
+			turnedOff: "Đã tắt chế độ chỉ quản trị viên nhóm mới có thể sử dụng bot",
+			turnedOnNoti: "Đã bật thông báo khi người dùng không phải là quản trị viên nhóm sử dụng bot",
+			turnedOffNoti: "Đã tắt thông báo khi người dùng không phải là quản trị viên nhóm sử dụng bot",
+			syntaxError: "Sai cú pháp, chỉ có thể dùng {pn} on hoặc {pn} off"
 		},
 		en: {
-			turnedOn: "Turned on the mode only admin can use bot",
-			turnedOff: "Turned off the mode only admin can use bot",
-			turnedOnNoti: "Turned on the notification when user is not admin use bot",
-			turnedOffNoti: "Turned off the notification when user is not admin use bot"
+			turnedOn: " ✅ |تم تشغيل الوضع، حيث يمكن للمطور فقط  استخدام البوت",
+			turnedOff: " ❌ |تم إيقاف تشغيل الوضع، حيث يمكن للمطور استخدام البوت",
+			turnedOnNoti: " ✅ |تم تشغيل الإشعار عندما لا يكون المستخدم مسؤولاً عن البوت الاستخدام الشامل",
+			turnedOffNoti: " ❌ |تم إيقاف تشغيل الإشعار عندما لا يكون المستخدم مسؤولاً عن البوت الاستخدام الجماعي",
+			syntaxError: " ⚠️ |خطأ في بناء الجملة, فقط استخدم {pn} تشغيل أو {pn} إيقاف"
 		}
 	},
 
-	onStart: function ({ args, message, getLang }) {
+	onStart: async function ({ args, message, event, threadsData, getLang }) {
 		let isSetNoti = false;
 		let value;
+		let keySetData = "data.onlyAdminBox";
 		let indexGetVal = 0;
 
-		if (args[0] == "noti") {
+		if (args[0] == "إشعار") {
 			isSetNoti = true;
 			indexGetVal = 1;
+			keySetData = "data.hideNotiMessageOnlyAdminBox";
 		}
 
-		if (args[indexGetVal] == "on")
+		if (args[indexGetVal] == "تشغيل")
 			value = true;
-		else if (args[indexGetVal] == "off")
+		else if (args[indexGetVal] == "إيقاف")
 			value = false;
 		else
-			return message.SyntaxError();
+			return message.reply(getLang("syntaxError"));
 
-		if (isSetNoti) {
-			config.hideNotiMessage.adminOnly = !value;
-			message.reply(getLang(value ? "turnedOnNoti" : "turnedOffNoti"));
-		}
-		else {
-			config.adminOnly.enable = value;
-			message.reply(getLang(value ? "turnedOn" : "turnedOff"));
-		}
+		await threadsData.set(event.threadID, isSetNoti ? !value : value, keySetData);
 
-		fs.writeFileSync(client.dirConfig, JSON.stringify(config, null, 2));
+		if (isSetNoti)
+			return message.reply(value ? getLang("turnedOnNoti") : getLang("turnedOffNoti"));
+		else
+			return message.reply(value ? getLang("turnedOn") : getLang("turnedOff"));
 	}
 };
