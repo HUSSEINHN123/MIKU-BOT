@@ -5,24 +5,24 @@ const FormData = require("form-data");
 
 module.exports = {
   config: {
-    name: "catbox",
+    name: "رابط",
     version: "1.2.0",
     author: "CYBER ULLASH",
     countDown: 5,
     role: 0,
-    shortDescription: "Upload media to Catbox",
-    longDescription: "Reply image/video/audio and get Catbox link",
-    category: "tools"
+    shortDescription: "رفع المرفقات سواء صور ، صوت ، فيديو الى موقع catbox",
+    longDescription: "ترد على صورة/مقطع/فيديو وتحصل على رابط مباشر",
+    category: "خدمات"
   },
 
   onStart: async function({ api, event }) {
     let loadingMsg;
     try {
       if (!event.messageReply || !event.messageReply.attachments || event.messageReply.attachments.length === 0) {
-        return api.sendMessage("❌ 𝐑𝐞𝐩𝐥𝐲 𝐉𝐏𝐆/𝐏𝐍𝐆/𝐌𝐏4/𝐌𝐏3/𝐕𝐨𝐢𝐜𝐞 𝐧𝐨𝐭𝐞 𝐟𝐢𝐥𝐞", event.threadID, event.messageID);
+        return api.sendMessage("❌ | رد على مرفق 𝐉𝐏𝐆/𝐏𝐍𝐆/𝐌𝐏4/𝐌𝐏3 للحصول على رابط", event.threadID, event.messageID);
       }
 
-      loadingMsg = await api.sendMessage("⏳ 𝐔𝐩𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐭𝐨 𝐂𝐚𝐭𝐛𝐨𝐱...", event.threadID);
+      loadingMsg = await api.sendMessage("⏳ | جارٍ الرفع الى catbox...", event.threadID);
 
       const attachment = event.messageReply.attachments[0];
       const fileUrl = attachment.url;
