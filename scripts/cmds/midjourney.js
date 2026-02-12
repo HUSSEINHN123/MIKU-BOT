@@ -12,20 +12,20 @@ const BASE_URL = async () => {
 
 module.exports = {
   config: {
-    name: "midjourney",
-    aliases: ["midj", "mj"],
+    name: "ميد",
+    aliases: ["mj"],
     author: "Rakib Adil",
     version: "2.4.70",
     role: 0,
-    shortDescription: "AI image generation with MidJourney style",
-    longDescription: "Generate and upscale MidJourney-style images using xnil’s API.",
+    shortDescription: "توليد الصور بالذكاء الاصطناعي بأسلوب MidJourney",
+    longDescription: "قم بإنشاء صور بنمط MidJourney وتكبيرها باستخدام واجهة برمجة تطبيقات xnil..",
     category: "image",
     guide: "{pn} <prompt>"
   },
 
   ST: async function ({ args, message, event }) {
     const prompt = args.join(" ").trim();
-    if (!prompt) return message.reply("⚠️ Please provide a prompt.");
+    if (!prompt) return message.reply("⚠️ | المرجو ادخال برومبت بعد الأمر.");
 
     const loading = await message.reply("Generating image, please wait.. 🎨");
     await message.reaction("⏳", event.messageID);
@@ -39,7 +39,7 @@ module.exports = {
       if (!data || !data.murl) {
         await message.unsend(loading.messageID);
         await message.reaction("❌", event.messageID);
-        return message.reply("❌ Failed to generate image. Please try again later.");
+        return message.reply("❌ | فشل إنشاء الصورة. يرجى المحاولة مرة أخرى لاحقاً.");
       }
 
       const taskId = data.taskId || "unknown";
@@ -54,7 +54,7 @@ module.exports = {
 
       const img = await global.utils.getStreamFromURL(murl);
       const sent = await message.reply({
-        body: `🧠 Prompt: ${prompt}\n💬 Reply with U1–U4 to upscale..`,
+        body: `🧠 الـبـرومـبـت : ${prompt}\n💬 رد بـ U1-U2-U3-U4 مـن أجـل الـحـصـول عـلـى الـصـورة..`,
         attachment: img
       });
 
@@ -78,7 +78,7 @@ module.exports = {
 
     const cid = input.replace(/[uv]/, "");
     const mode = input.startsWith("v") ? "variation" : "upscale";
-    const processing = await message.reply(`🔄 Processing ${input.toUpperCase()} (${mode})...`);
+    const processing = await message.reply(`🔄 | جـارٍ الـمـعـالـجـة ${input.toUpperCase()} (${mode})...`);
     await message.reaction("⏳", event.messageID);
 
     try {
@@ -99,7 +99,7 @@ module.exports = {
 
       const img = await global.utils.getStreamFromURL(data.url);
       const sent = await message.reply({
-        body: `✅ ${mode === "upscale" ? "Upscaled" : "Variation"} ${input.toUpperCase()} done.\n💬 Reply again with U1–U4.. `,
+        body: `✅ ${mode === "upscale" ? "رفـع جـودتـها" : "الـمـتـغـيـرات"} ${input.toUpperCase()} تـم.\n💬 رد عـلـى الـرسـالـة مـجـددا بـيـن U1 إلـى U4.. `,
         attachment: img
       });
 
