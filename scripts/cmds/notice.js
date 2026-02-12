@@ -16,7 +16,7 @@ module.exports = {
       vi: "Gửi thông báo từ admin đến tất cả các box",
       en: "إرسال إشعار إلى جميع المجموعات",
     },
-    category: "المالك",
+    category: "المطور",
     guide: {
       en: "{pn} <رسالة>",
     },
