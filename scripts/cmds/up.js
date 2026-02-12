@@ -22,13 +22,14 @@ const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
 
 module.exports = {
   config: {
-    name: "up",
+    name: "ابتايم",
+    aliases:["up","upt"],
     version: "3.5",
     author: "MR᭄﹅ MAHABUB﹅ メꪜ",
     countDown: 5,
     role: 0,
-    description: "Check bot uptime with full system + VPS details",
-    category: "system",
+    description: "تحقق من وقت تشغيل البوت مع تفاصيل النظام الكاملة + الخادم الافتراضي الخاص",
+    category: "النظام",
   },
 
   onStart: async function ({ api, event }) {
