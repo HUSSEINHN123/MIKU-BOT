@@ -43,11 +43,11 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
   return y;
 }
 
-const WELCOME_GIF_URL = "https://files.catbox.moe/38guc2.gif";
+const WELCOME_GIF_URL = "https://files.catbox.moe/oq77js.jpeg";
 
 async function sendWelcomeGifMessage(api, threadID, bodyText) {
   try {
-    const gifPath = path.join(__dirname, "cache", "welcome_bot.gif");
+    const gifPath = path.join(__dirname, "cache", "welcome_bot.jpeg");
 
     if (!fs.existsSync(gifPath)) {
       const { data } = await axios.get(WELCOME_GIF_URL, { responseType: "arraybuffer" });
