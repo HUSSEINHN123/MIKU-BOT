@@ -11,14 +11,14 @@ const animeCharacters = [
 
 module.exports = {
   config: {
-    name: "ايدي",
+    name: "آيدي",
     version: "1.0",
     author: "حسين يعقوبي",
     countDown: 60,
     role: 0,
     shortDescription: "الحصول على معلومات المستخدم والصورة",
     longDescription: "احصل على معلومات المستخدم والصورة من خلال منشن",
-    category: "خدمات",
+    category: "معلومات",
   },
 
   onStart: async function ({ event, message, usersData, api, args, threadsData }) {
