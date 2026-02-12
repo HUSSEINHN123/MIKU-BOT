@@ -11,17 +11,17 @@ const getApiBase = async () => {
 };
 
 module.exports.config = {
-  name: "prompt",
+  name: "برومبت",
   version: "6.9",
   credits: "dipto",
   countDown: 5,
   hasPermssion: 0,
-  description: "image to prompt",
-  category: "tools",
-  commandCategory: "tools",
+  description: "صورة الى برومبت",
+  category: "أدوات",
+  commandCategory: "أدوات",
   usePrefix: true,
   prefix: true,
-  usages: "reply [image]"
+  usages: "رد على [صورة]"
 };
 
 module.exports.onStart = async function({ api, event, args }) {
