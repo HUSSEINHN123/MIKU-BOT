@@ -1,42 +1,41 @@
-
 const { getTime } = global.utils;
 
 module.exports = {
 	config: {
-		name: "mthread",
-		aliases: ["threadapprove", "tapprove"],
+		name: "موافقة",
+		aliases: ["threadapprove", "tapprove", "موافقة-المجموعات"],
 		version: "2.4.0",
-		author: "Sheikh Tamim",
+		author: "Sheikh Tamim - تمت الترجمة بواسطة Ullash",
 		countDown: 5,
 		role: 2,
-		description: "Manage thread approvals - list, approve, reject, or cancel threads",
-		category: "Admin",
+		description: "إدارة موافقات المجموعات - عرض، موافقة، رفض، أو إلغاء المجموعات",
+		category: "إدارة",
 		guide: {
-			en: "{pn} - Show pending threads with interactive menu\n{pn} list - Show all threads with approval status\n{pn} approved - Show only approved threads\n{pn} pending - Show only pending threads\n{pn} p <page> - Navigate pages\n{pn} a <numbers> - Approve specific threads\n{pn} r <numbers> - Reject specific threads\n{pn} c <numbers> - Cancel approval (move to pending)\n{pn} auto - Auto approve all pending threads"
+			en: "{pn} - عرض المجموعات المعلقة مع قائمة تفاعلية\n{pn} list - عرض كل المجموعات مع حالة الموافقة\n{pn} approved - عرض المجموعات الموافق عليها فقط\n{pn} pending - عرض المجموعات المعلقة فقط\n{pn} p <رقم الصفحة> - التنقل بين الصفحات\n{pn} a <الأرقام> - الموافقة على مجموعات محددة\n{pn} r <الأرقام> - رفض مجموعات محددة\n{pn} c <الأرقام> - إلغاء الموافقة (نقل إلى المعلقة)\n{pn} auto - موافقة تلقائية على كل المجموعات المعلقة"
 		}
 	},
 
 	langs: {
 		en: {
-			systemDisabled: "❌ Thread approval system is disabled in config.",
-			pendingThreads: "📋 PENDING THREADS (Page %1/%2)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n%3\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 Reply commands:\n• 'a <numbers>' - Approve (e.g., 'a 1 2 3')\n• 'r <numbers>' - Reject (e.g., 'r 1 2')\n• 'p <page>' - Go to page (e.g., 'p 2')\n• 'approved' - Show approved threads\n• 'list' - Show all threads",
-			allThreads: "📋 ALL THREADS (Page %1/%2)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n%3\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n✅ = Approved | ❌ = Pending\n💡 Reply: 'p <page>' to navigate",
-			approvedThreads: "✅ APPROVED THREADS (Page %1/%2)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n%3\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 Reply commands:\n• 'r <numbers>' - Reject and leave GC\n• 'c <numbers>' - Cancel approval (move to pending)\n• 'p <page>' - Go to page",
-			noPendingThreads: "✅ No threads pending approval.",
-			noApprovedThreads: "❌ No threads approved yet.",
-			noThreads: "❌ No threads found.",
-			threadApproved: "✅ Thread approved: %1 (ID: %2)",
-			threadRejected: "❌ Thread rejected: %1 (ID: %2)",
-			threadCancelled: "🔄 Approval cancelled for: %1 (ID: %2) - Moved to pending",
-			multipleApproved: "✅ Successfully approved %1 threads.",
-			multipleRejected: "❌ Successfully rejected %1 threads and left GCs.",
-			multipleCancelled: "🔄 Successfully cancelled approval for %1 threads.",
-			autoApproveSuccess: "✅ Auto-approved %1 pending threads.",
-			invalidNumbers: "❌ Invalid numbers: %1. Use numbers from the list above.",
-			invalidPage: "❌ Invalid page number. Available pages: 1-%1",
-			invalidReply: "❌ Invalid command. Use:\n• 'a <numbers>' - Approve\n• 'r <numbers>' - Reject\n• 'c <numbers>' - Cancel approval\n• 'p <page>' - Go to page\n• 'approved' - Show approved\n• 'list' - Show all",
-			approvalProcessComplete: "✅ Approval process completed! Here are the approved threads:",
-			rejectionProcessComplete: "❌ Rejection process completed! Bot left the rejected groups."
+			systemDisabled: "❌ نظام موافقة المجموعات معطل في الإعدادات.",
+			pendingThreads: "📋 المجموعات المعلقة (الصفحة %1/%2)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n%3\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 أوامر الرد:\n• 'a <الأرقام>' - موافقة (مثال: 'a 1 2 3')\n• 'r <الأرقام>' - رفض (مثال: 'r 1 2')\n• 'p <الصفحة>' - الذهاب لصفحة (مثال: 'p 2')\n• 'approved' - عرض الموافق عليها\n• 'list' - عرض الكل",
+			allThreads: "📋 كل المجموعات (الصفحة %1/%2)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n%3\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n✅ = موافق | ❌ = معلق\n💡 رد: 'p <الصفحة>' للتنقل",
+			approvedThreads: "✅ المجموعات الموافق عليها (الصفحة %1/%2)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n%3\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 أوامر الرد:\n• 'r <الأرقام>' - رفض ومغادرة المجموعة\n• 'c <الأرقام>' - إلغاء الموافقة (نقل للمعلقة)\n• 'p <الصفحة>' - الذهاب لصفحة",
+			noPendingThreads: "✅ لا توجد مجموعات معلقة للموافقة.",
+			noApprovedThreads: "❌ لا توجد مجموعات موافق عليها بعد.",
+			noThreads: "❌ لا توجد مجموعات.",
+			threadApproved: "✅ تمت الموافقة على المجموعة: %1 (المعرف: %2)",
+			threadRejected: "❌ تم رفض المجموعة: %1 (المعرف: %2)",
+			threadCancelled: "🔄 تم إلغاء الموافقة عن: %1 (المعرف: %2) - نقلت للمعلقة",
+			multipleApproved: "✅ تمت الموافقة بنجاح على %1 مجموعة.",
+			multipleRejected: "❌ تم رفض %1 مجموعات ومغادرتها بنجاح.",
+			multipleCancelled: "🔄 تم إلغاء الموافقة بنجاح عن %1 مجموعة.",
+			autoApproveSuccess: "✅ تمت الموافقة التلقائية على %1 مجموعة معلقة.",
+			invalidNumbers: "❌ أرقام غير صحيحة: %1. استخدم الأرقام من القائمة أعلاه.",
+			invalidPage: "❌ رقم صفحة غير صحيح. الصفحات المتاحة: 1-%1",
+			invalidReply: "❌ أمر غير صحيح. استخدم:\n• 'a <الأرقام>' - موافقة\n• 'r <الأرقام>' - رفض\n• 'c <الأرقام>' - إلغاء الموافقة\n• 'p <الصفحة>' - الذهاب لصفحة\n• 'approved' - عرض الموافق عليها\n• 'list' - عرض الكل",
+			approvalProcessComplete: "✅ اكتملت عملية الموافقة! هذه هي المجموعات الموافق عليها:",
+			rejectionProcessComplete: "❌ اكتملت عملية الرفض! غادر البوت المجموعات المرفوضة."
 		}
 	},
 
@@ -63,15 +62,15 @@ module.exports = {
 					// Send approval message to thread
 					setTimeout(async () => {
 						try {
-							await api.sendMessage("🎉 This thread has been approved! Bot will now respond to your commands.", thread.threadID);
+							await api.sendMessage("🎉 تمت الموافقة على هذه المجموعة! البوت سيستجيب الآن لأوامرك.", thread.threadID);
 						} catch (err) {
-							console.error(`Failed to send approval message to thread ${thread.threadID}:`, err.message);
+							console.error(`فشل إرسال رسالة الموافقة للمجموعة ${thread.threadID}:`, err.message);
 						}
 					}, 1000 + (approvedCount * 500));
 
 					approvedCount++;
 				} catch (err) {
-					console.error(`Failed to approve thread ${thread.threadID}:`, err.message);
+					console.error(`فشلت الموافقة على المجموعة ${thread.threadID}:`, err.message);
 				}
 			}
 
@@ -129,12 +128,12 @@ module.exports = {
 			
 			try {
 				const threadInfo = await api.getThreadInfo(thread.threadID);
-				const threadName = threadInfo.threadName || "Unknown";
+				const threadName = threadInfo.threadName || "غير معروف";
 				const memberCount = threadInfo.participantIDs?.length || 0;
 				const approvalStatus = thread.approved === true ? "✅" : "❌";
-				const addedTime = thread.createdAt ? new Date(thread.createdAt).toLocaleDateString() : "Unknown";
+				const addedTime = thread.createdAt ? new Date(thread.createdAt).toLocaleDateString("ar-EG") : "غير معروف";
 
-				threadList += `${listNumber}. ${approvalStatus} ${threadName}\n   👥 ${memberCount} members | ⏰ ${addedTime}\n   🆔 ${thread.threadID}\n\n`;
+				threadList += `${listNumber}. ${approvalStatus} ${threadName}\n   👥 ${memberCount} عضو | ⏰ ${addedTime}\n   🆔 ${thread.threadID}\n\n`;
 				
 				threadDetails.push({
 					threadID: thread.threadID,
@@ -145,11 +144,11 @@ module.exports = {
 				});
 			} catch (err) {
 				const approvalStatus = thread.approved === true ? "✅" : "❌";
-				threadList += `${listNumber}. ${approvalStatus} Unknown Thread\n   🆔 ${thread.threadID}\n\n`;
+				threadList += `${listNumber}. ${approvalStatus} مجموعة غير معروفة\n   🆔 ${thread.threadID}\n\n`;
 				
 				threadDetails.push({
 					threadID: thread.threadID,
-					threadName: "Unknown Thread",
+					threadName: "مجموعة غير معروفة",
 					memberCount: 0,
 					approved: thread.approved === true,
 					listNumber: listNumber
@@ -170,7 +169,7 @@ module.exports = {
 		return message.reply(replyMessage, (err, info) => {
 			if (!err) {
 				global.GoatBot.onReply.set(info.messageID, {
-					commandName: "mthread",
+					commandName: "موافقة",
 					messageID: info.messageID,
 					author: api.getCurrentUserID(),
 					threadDetails: threadDetails,
@@ -218,12 +217,12 @@ module.exports = {
 				
 				try {
 					const threadInfo = await api.getThreadInfo(thread.threadID);
-					const threadName = threadInfo.threadName || "Unknown";
+					const threadName = threadInfo.threadName || "غير معروف";
 					const memberCount = threadInfo.participantIDs?.length || 0;
 					const approvalStatus = thread.approved === true ? "✅" : "❌";
-					const addedTime = thread.createdAt ? new Date(thread.createdAt).toLocaleDateString() : "Unknown";
+					const addedTime = thread.createdAt ? new Date(thread.createdAt).toLocaleDateString("ar-EG") : "غير معروف";
 
-					threadList += `${listNumber}. ${approvalStatus} ${threadName}\n   👥 ${memberCount} members | ⏰ ${addedTime}\n   🆔 ${thread.threadID}\n\n`;
+					threadList += `${listNumber}. ${approvalStatus} ${threadName}\n   👥 ${memberCount} عضو | ⏰ ${addedTime}\n   🆔 ${thread.threadID}\n\n`;
 					
 					newThreadDetails.push({
 						threadID: thread.threadID,
@@ -234,11 +233,11 @@ module.exports = {
 					});
 				} catch (err) {
 					const approvalStatus = thread.approved === true ? "✅" : "❌";
-					threadList += `${listNumber}. ${approvalStatus} Unknown Thread\n   🆔 ${thread.threadID}\n\n`;
+					threadList += `${listNumber}. ${approvalStatus} مجموعة غير معروفة\n   🆔 ${thread.threadID}\n\n`;
 					
 					newThreadDetails.push({
 						threadID: thread.threadID,
-						threadName: "Unknown Thread",
+						threadName: "مجموعة غير معروفة",
 						memberCount: 0,
 						approved: thread.approved === true,
 						listNumber: listNumber
@@ -258,7 +257,7 @@ module.exports = {
 			message.reply(replyMessage, (err, info) => {
 				if (!err) {
 					global.GoatBot.onReply.set(info.messageID, {
-						commandName: "mthread",
+						commandName: "موافقة",
 						messageID: info.messageID,
 						author: api.getCurrentUserID(),
 						threadDetails: newThreadDetails,
@@ -305,12 +304,12 @@ module.exports = {
 				
 				try {
 					const threadInfo = await api.getThreadInfo(thread.threadID);
-					const threadName = threadInfo.threadName || "Unknown";
+					const threadName = threadInfo.threadName || "غير معروف";
 					const memberCount = threadInfo.participantIDs?.length || 0;
 					const approvalStatus = thread.approved === true ? "✅" : "❌";
-					const addedTime = thread.createdAt ? new Date(thread.createdAt).toLocaleDateString() : "Unknown";
+					const addedTime = thread.createdAt ? new Date(thread.createdAt).toLocaleDateString("ar-EG") : "غير معروف";
 
-					threadList += `${listNumber}. ${approvalStatus} ${threadName}\n   👥 ${memberCount} members | ⏰ ${addedTime}\n   🆔 ${thread.threadID}\n\n`;
+					threadList += `${listNumber}. ${approvalStatus} ${threadName}\n   👥 ${memberCount} عضو | ⏰ ${addedTime}\n   🆔 ${thread.threadID}\n\n`;
 					
 					newThreadDetails.push({
 						threadID: thread.threadID,
@@ -321,11 +320,11 @@ module.exports = {
 					});
 				} catch (err) {
 					const approvalStatus = thread.approved === true ? "✅" : "❌";
-					threadList += `${listNumber}. ${approvalStatus} Unknown Thread\n   🆔 ${thread.threadID}\n\n`;
+					threadList += `${listNumber}. ${approvalStatus} مجموعة غير معروفة\n   🆔 ${thread.threadID}\n\n`;
 					
 					newThreadDetails.push({
 						threadID: thread.threadID,
-						threadName: "Unknown Thread",
+						threadName: "مجموعة غير معروفة",
 						memberCount: 0,
 						approved: thread.approved === true,
 						listNumber: listNumber
@@ -345,7 +344,7 @@ module.exports = {
 			message.reply(replyMessage, (err, info) => {
 				if (!err) {
 					global.GoatBot.onReply.set(info.messageID, {
-						commandName: "mthread",
+						commandName: "موافقة",
 						messageID: info.messageID,
 						author: api.getCurrentUserID(),
 						threadDetails: newThreadDetails,
@@ -385,9 +384,9 @@ module.exports = {
 					// Send approval message to thread
 					setTimeout(async () => {
 						try {
-							await api.sendMessage("🎉 This thread has been approved! Bot will now respond to your commands.", targetThread.threadID);
+							await api.sendMessage("🎉 تمت الموافقة على هذه المجموعة! البوت سيستجيب الآن لأوامرك.", targetThread.threadID);
 						} catch (err) {
-							console.error(`Failed to send approval message to thread ${targetThread.threadID}:`, err.message);
+							console.error(`فشل إرسال رسالة الموافقة للمجموعة ${targetThread.threadID}:`, err.message);
 						}
 					}, 1000 + (approvedCount * 500));
 
@@ -395,7 +394,7 @@ module.exports = {
 					approvedCount++;
 					approvedThreads.push(targetThread);
 				} catch (err) {
-					console.error(`Failed to approve thread ${targetThread.threadID}:`, err.message);
+					console.error(`فشلت الموافقة على المجموعة ${targetThread.threadID}:`, err.message);
 				}
 			}
 
@@ -407,16 +406,16 @@ module.exports = {
 			if (approvedThreads.length > 0) {
 				setTimeout(() => {
 					const approvedList = approvedThreads.map((thread, index) => 
-						`${index + 1}. ✅ ${thread.threadName}\n   👥 ${thread.memberCount} members\n   🆔 ${thread.threadID}\n`
+						`${index + 1}. ✅ ${thread.threadName}\n   👥 ${thread.memberCount} عضو\n   🆔 ${thread.threadID}\n`
 					).join('\n');
 
 					const approvedMessage = getLang("approvalProcessComplete") + "\n\n" + approvedList + 
-						"\n💡 Reply commands:\n• 'r <numbers>' - Reject and leave GC\n• 'c <numbers>' - Cancel approval (move to pending)";
+						"\n💡 أوامر الرد:\n• 'r <الأرقام>' - رفض ومغادرة المجموعة\n• 'c <الأرقام>' - إلغاء الموافقة (نقل للمعلقة)";
 
 					message.reply(approvedMessage, (err, info) => {
 						if (!err) {
 							global.GoatBot.onReply.set(info.messageID, {
-								commandName: "mthread",
+								commandName: "موافقة",
 								messageID: info.messageID,
 								author: api.getCurrentUserID(),
 								threadDetails: approvedThreads.map((thread, index) => ({
@@ -457,23 +456,23 @@ module.exports = {
 					// Send rejection message and leave
 					setTimeout(async () => {
 						try {
-							await api.sendMessage("❌ This thread has been rejected by an admin. Bot is leaving the group.", targetThread.threadID);
+							await api.sendMessage("❌ تم رفض هذه المجموعة من قبل الإدارة. البوت يغادر المجموعة.", targetThread.threadID);
 							setTimeout(async () => {
 								try {
 									await api.removeUserFromGroup(api.getCurrentUserID(), targetThread.threadID);
 								} catch (err) {
-									console.error(`Failed to leave thread ${targetThread.threadID}:`, err.message);
+									console.error(`فشل مغادرة المجموعة ${targetThread.threadID}:`, err.message);
 								}
 							}, 2000);
 						} catch (err) {
-							console.error(`Failed to send rejection message to thread ${targetThread.threadID}:`, err.message);
+							console.error(`فشل إرسال رسالة الرفض للمجموعة ${targetThread.threadID}:`, err.message);
 						}
 					}, 1000 + (rejectedCount * 1000));
 
 					message.reply(getLang("threadRejected", targetThread.threadName, targetThread.threadID));
 					rejectedCount++;
 				} catch (err) {
-					console.error(`Failed to reject thread ${targetThread.threadID}:`, err.message);
+					console.error(`فشل رفض المجموعة ${targetThread.threadID}:`, err.message);
 				}
 			}
 
@@ -508,16 +507,16 @@ module.exports = {
 					// Send cancel message to thread
 					setTimeout(async () => {
 						try {
-							await api.sendMessage("🔄 Thread approval has been cancelled. This thread is now pending approval again.", targetThread.threadID);
+							await api.sendMessage("🔄 تم إلغاء الموافقة على هذه المجموعة. المجموعة في قائمة الانتظار مرة أخرى.", targetThread.threadID);
 						} catch (err) {
-							console.error(`Failed to send cancellation message to thread ${targetThread.threadID}:`, err.message);
+							console.error(`فشل إرسال رسالة إلغاء الموافقة للمجموعة ${targetThread.threadID}:`, err.message);
 						}
 					}, 1000 + (cancelledCount * 500));
 
 					message.reply(getLang("threadCancelled", targetThread.threadName, targetThread.threadID));
 					cancelledCount++;
 				} catch (err) {
-					console.error(`Failed to cancel thread ${targetThread.threadID}:`, err.message);
+					console.error(`فشل إلغاء موافقة المجموعة ${targetThread.threadID}:`, err.message);
 				}
 			}
 
