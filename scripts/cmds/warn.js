@@ -2,16 +2,16 @@ const { getTime } = global.utils;
 
 module.exports = {
 	config: {
-		name: "warn",
+		name: "تحذير",
 		version: "1.8",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
 		description: {
 			vi: "cảnh cáo thành viên trong nhóm, đủ 3 lần ban khỏi box",
-			en: "warn member in group, if they have 3 warns, they will be banned"
+			en: "تحذير الأعضاء في المجموعة، إذا كان لديهم 3 تحذيرات، سيتم حظرهم"
 		},
-		category: "box chat",
+		category: "المجموعة",
 		guide: {
 			vi: "   {pn} @tag <lý do>: dùng cảnh cáo thành viên"
 				+ "\n   {pn} list: xem danh sách những thành viên đã bị cảnh cáo"
@@ -21,14 +21,14 @@ module.exports = {
 				+ "\n   {pn} unwarn [@tag | <uid> | reply | để trống] [<số thứ tự> | để trống]: gỡ cảnh cáo thành viên bằng uid và số thứ tự cảnh cáo, nếu để trống sẽ gỡ cảnh cáo cuối cùng"
 				+ "\n   {pn} reset: reset tất cả dữ liệu cảnh cáo"
 				+ "\n⚠️ Cần set quản trị viên cho bot để bot tự kick thành viên bị ban",
-			en: "   {pn} @tag <reason>: warn member"
-				+ "\n   {pn} list: view list of warned members"
-				+ "\n   {pn} listban: view list of banned members"
-				+ "\n   {pn} info [@tag | <uid> | reply | leave blank]: view warning information of tagged person or uid or yourself"
-				+ "\n   {pn} unban [@tag | <uid> | reply | leave blank]: unban member, at the same time remove all warnings of that member"
-				+ "\n   {pn} unwarn [@tag | <uid> | reply | leave blank] [<number> | leave blank]: remove warning of member by uid and number of warning, if leave blank will remove the last warning"
-				+ "\n   {pn} reset: reset all warn data"
-				+ "\n⚠️ You need to set admin for bot to auto kick banned members"
+			en: "   {pn} @منشن <السبب>: قم بتحذير العضو"
+				+ "\n   {pn} قائمة : قن بعرض قائمة الأعضاء اللذين تم حظرهم"
+				+ "\n   {pn} قائمة_المحظورين : عرض قائمة الأعضاء المحظورين"
+				+ "\n   {pn} معلومات [@منشن | <آيدي> | رد | أتركه فارغا]: قم بعرض معلومات  المحظورين عن الشخص اللذي قمت بعمل منشن له أو آيظي الخاص به أو الخاص بك"
+				+ "\n   {pn} رفع_الحظر [@منشن | <آيدي> | رد | أتركها فارغة]: قم برفع الحظر عنه وفي نفس الوقت أنت ترفع كل المرات اللتي تم حظره فيها"
+				+ "\n   {pn} إزالة_الحظر [@منشن | <آيدي> | رد | أتركهل فارغة] [<الرقم> | أتركها فارغة]: قم بإزالة الحظر عن عضو ما بإستخدام الآيدي او الرقم الخاص به إذا تركته فالدرغة سيتم إزالة آخر تحذير قمت به"
+				+ "\n   {pn}إستعادة قم بإستعادة كل بيانات التحذير إلى الصفر"
+				+ "\n⚠️ | عليك وضع البوت كآدمن في المجموعة إذا أردت البوت أن يطرد الأعضاء اللذين تم تحذيرهم"
 		}
 	},
 
@@ -61,31 +61,31 @@ module.exports = {
 			userNotInGroup: "⚠️ Người dùng \"%1\" hiện tại không có trong nhóm của bạn"
 		},
 		en: {
-			list: "List of members who have been warned:\n%1\n\nTo view the details of the warnings, use the \"%2warn info [@tag | <uid> | leave blank]\" command: to view the warning information of the tagged person or uid or yourself",
-			listBan: "List of members who have been warned 3 times and banned from the box:\n%1",
-			listEmpty: "Your group has no members who have been warned",
-			listBanEmpty: "Your group has no members banned from the box",
-			invalidUid: "Please enter a valid uid of the person you want to view information",
-			noData: "No data",
-			noPermission: "❌ Only group administrators can unban members banned from the box",
-			invalidUid2: "⚠️ Please enter a valid uid of the person you want to unban",
-			notBanned: "⚠️ The user with id %1 has not been banned from your box",
-			unbanSuccess: "✅ Successfully unbanned member [%1 | %2], currently this person can join your chat box",
-			noPermission2: "❌ Only group administrators can remove warnings from members in the group",
-			invalidUid3: "⚠️ Please enter a uid or tag the person you want to remove the warning",
-			noData2: "⚠️ The user with id %1 has no warning data",
-			notEnoughWarn: "❌ The user %1 only has %2 warnings",
-			unwarnSuccess: "✅ Successfully removed the %1 warning of member [%2 | %3]",
-			noPermission3: "❌ Only group administrators can reset warning data",
-			resetWarnSuccess: "✅ Successfully reset warning data",
-			noPermission4: "❌ Only group administrators can warn members in the group",
-			invalidUid4: "⚠️ You need to tag or reply to the message of the person you want to warn",
-			warnSuccess: "⚠️ Warned member %1 times %2\n- Uid: %3\n- Reason: %4\n- Date Time: %5\nThis member has been warned 3 times and banned from the box, to unban use the command \"%6warn unban <uid>\" (with uid is the uid of the person you want to unban)",
-			noPermission5: "⚠️ Bot needs administrator permissions to kick banned members",
-			warnSuccess2: "⚠️ Warned member %1 %2 times\n- Uid: %3\n- Reason: %4\n- Date Time: %5\nIf this person violates %6 more times, they will be banned from the box",
-			hasBanned: "⚠️ The following members have been warned 3 times before and banned from the box:\n%1",
-			failedKick: "⚠️ An error occurred when kicking the following members:\n%1",
-			userNotInGroup: "⚠️ The user \"%1\" is currently not in your group"
+			list: "قائمة الأعضاء اللتي تم تحذيرهم :\n%1\n\nمن أجل عرض التفاصيل حول الشخص الذي تريد معرفة معلومات حول الحظر عنه إستخدم  \"%2تحذير معلومات [@منشن | <آيدي> | أتركا فارغة]\" الأمر : لعرض معلومات التحذير الخاصة بالشخص الذي تم عمل منشن عليه أو المعرف (آيدي) أو بنفسك",
+			listBan: "قائمة الأعضاء الذين تم تحذيرهم 3 مرات وتم حظرهم من المجموعة :\n%1",
+			listEmpty: " ⚠️ |مجموعتك ليس لديها أي أعضاء تم تحذيرهم",
+			listBanEmpty: " ⚠️ | مجموعتك ليس بها أي أعضاء محظورين من قبل",
+			invalidUid: " ⚠️ | أرجوك قم بإدخال آيدي صحيح لعرض معلومات حول هذا الشخص ",
+			noData: "لايوجد بيانات ❗",
+			noPermission: "❌ فقط آدمنية المجموعة وحدهم يمكنهم رفع الحظر عن الأعضاء",
+			invalidUid2: "⚠️ |أرجوك قم بإدخال آيدي صحيح من أجل عرض معلومات العضو",
+			notBanned: "⚠️ | المستخدم مع الآيدي  %1 لم يتم تحذيره من قبل",
+			unbanSuccess: "✅ | تم ؤفع الحظر بنجاح عن العضو مع الآيدي  [%1 | %2], حاليا يمكن لهذا الشخص أن ينضم مجددا إلى المجموعة",
+			noPermission2: "❌ | فقط آدمنية المجموعة يمكنهم إزالة التحذير عن الاعضاء بالمجموعة",
+			invalidUid3: "⚠️ | المرجو إدخال الآيدي أو قم بمنشن الشخص اللذي تريد إزالة التحذير عنه",
+			noData2: "⚠️ | المستخدم مع الآيدي %1 ليس لديه بيانات تحذير من قبل",
+			notEnoughWarn: "❌ | المستخدم مع الإيدي %1 لديه فقط %2 من التحذيرات",
+			unwarnSuccess: "✅ | تم حذف بنجاح %1 من التحذيرات بالنسبة للعضو [%2 | %3]",
+			noPermission3: "❌ | فقط آدمنية المجموعة يمكنهم إستعادة بيانات التحذير إلى الصفر",
+			resetWarnSuccess: "✅ | تمت أعادة بيانات التحذير إلى ابصفر بنجاح",
+			noPermission4: "❌ | فقط آدمنية الغروب يمكنهم تحذير الأعضاء",
+			invalidUid4: "⚠️ | تحتاج إدخال الآيدي أو عمل منشن أو رد على رسالته وأكتب السبب",
+			warnSuccess: "⚠️ عضو محظر %1 مرات التحذير %2\n- الآيدي : %3\n- السبب : %4\n- تاريخ المرات : %5\nهذا الشخص تم تحذيره ثلاث مرات من قبل وتم حظره من المجموعة قم بإستخدام  \"%6تحذير حظر <آيدي>\" (مع آيدي الشخص يمكنك حظر من تريد)",
+			noPermission5: "⚠️ | يحتاج البوت أن يكون من الآدمنية في المجموعة من اجل طرد الاعضاء",
+			warnSuccess2: "⚠️ عضو محذر %1 %2 المرات\n- الآيدي : %3\n- الشبب : %4\n- تاريخ : %5\nإذا قام هذا الشخص بإعادة الكرة  %6 من المرات ، سيتم حظره من المجموعة",
+			hasBanned: "⚠️ تم تحذير الأعضاء التاليين 3 مرات من قبل وتم حظرهم من المجموعة :\n%1",
+			failedKick: "⚠️ حدث خطأ عند طرد الأعضاء التاليين :\n%1",
+			userNotInGroup: "⚠️ المستخدم \"%1\" هو حاليا غير موجود في المجموعة"
 		}
 	},
 
@@ -96,7 +96,7 @@ module.exports = {
 		const warnList = await threadsData.get(threadID, "data.warn", []);
 
 		switch (args[0]) {
-			case "list": {
+			case "قائمة": {
 				const msg = await Promise.all(warnList.map(async user => {
 					const { uid, list } = user;
 					const name = await usersData.getName(uid);
@@ -105,7 +105,7 @@ module.exports = {
 				message.reply(msg.length ? getLang("list", msg.join("\n"), prefix) : getLang("listEmpty"));
 				break;
 			}
-			case "listban": {
+			case "قائمة_المحظورين": {
 				const result = (await Promise.all(warnList.map(async user => {
 					const { uid, list } = user;
 					if (list.length >= 3) {
@@ -116,8 +116,8 @@ module.exports = {
 				message.reply(result.length ? getLang("listBan", result.join("\n")) : getLang("listBanEmpty"));
 				break;
 			}
-			case "check":
-			case "info": {
+			case "تفقد":
+			case "معلومات": {
 				let uids, msg = "";
 				if (Object.keys(event.mentions).length)
 					uids = Object.keys(event.mentions);
@@ -138,12 +138,12 @@ module.exports = {
 					const userName = await usersData.getName(uid);
 
 					if (!dataWarnOfUser || dataWarnOfUser.list.length == 0)
-						msg += `\n  Name: ${userName}\n  ${getLang("noData")}`;
+						msg += `\n  الإسم: ${userName}\n  ${getLang("noData")}`;
 					else {
-						msg += `\nName: ${userName}`
-							+ `\nWarn list:` + dataWarnOfUser.list.reduce((acc, warn) => {
+						msg += `\nالإسم : ${userName}`
+							+ `\nقائمة المحذرين :` + dataWarnOfUser.list.reduce((acc, warn) => {
 								const { dateTime, reason } = warn;
-								return acc + `\n  - Reason: ${reason}\n    Time: ${dateTime}`;
+								return acc + `\n  - السبب 📝: ${reason}\n    الوقت ⏱️: ${dateTime}`;
 							}, "");
 					}
 					return msg;
@@ -151,7 +151,7 @@ module.exports = {
 				message.reply(msg);
 				break;
 			}
-			case "unban": {
+			case "رفع_الحظر": {
 				if (role < 1)
 					return message.reply(getLang("noPermission"));
 				let uidUnban;
@@ -177,7 +177,7 @@ module.exports = {
 				message.reply(getLang("unbanSuccess", uidUnban, userName));
 				break;
 			}
-			case "unwarn": {
+			case "إزالة_التحذير": {
 				if (role < 1)
 					return message.reply(getLang("noPermission2"));
 				let uid, num;
@@ -215,7 +215,7 @@ module.exports = {
 				message.reply(getLang("unwarnSuccess", num + 1, uid, userName));
 				break;
 			}
-			case "reset": {
+			case "إستعادة": {
 				if (role < 1)
 					return message.reply(getLang("noPermission3"));
 				await threadsData.set(threadID, [], "data.warn");
