@@ -2,27 +2,31 @@ const { getTime } = global.utils;
 
 module.exports = {
 	config: {
-		name: "user",
-		version: "1.4",
+		name: "مستخدم",
+		version: "1.3",
 		author: "NTKhang",
 		countDown: 5,
 		role: 2,
-		description: {
-			vi: "Quản lý người dùng trong hệ thống bot",
-			en: "Manage users in bot system"
+		shortDescription: {
+			vi: "Quản lý người dùng",
+			en: "إدارة المستخدمين"
 		},
-		category: "owner",
+		longDescription: {
+			vi: "Quản lý người dùng trong hệ thống bot",
+			en: "قم بإدارة المستخدمين في نظام البوت"
+		},
+		category: "المالك",
 		guide: {
-			vi: "   {pn} [find | -f | search | -s] <tên cần tìm>: tìm kiếm người dùng trong dữ liệu bot bằng tên"
+			vi: "   {pn} [جد | -f | بحث | -s] <tên cần tìm>: tìm kiếm người dùng trong dữ liệu bot bằng tên"
 				+ "\n"
 				+ "\n   {pn} [ban | -b] [<uid> | @tag | reply tin nhắn] <reason>: để cấm người dùng mang id <uid> hoặc người được tag hoặc người gửi của tin nhắn được reply sử dụng bot"
 				+ "\n"
 				+ "\n   {pn} unban [<uid> | @tag | reply tin nhắn]: để bỏ cấm người dùng sử dụng bot",
-			en: "   {pn} [find | -f | search | -s] <name to find>: search for users in bot data by name"
+			en: "   {pn} [جد |  بحث | ] <إسم من أجل إيجاده>: قم بالبحث عن مستخدمين"
 				+ "\n"
-				+ "\n   {pn} [ban | -b] [<uid> | @tag | reply message] <reason>: to ban user with id <uid> or tagged user or sender of message replied using bot"
+				+ "\n   {pn} [حظر | -b] [<آيدي> | @تاغ | قم بالرد على رسالة] <السبب>: لكي تقوم بحظر صاحب الآيدي <آيدي> أو قم بعمل منشن أو قم بالرد على رسالته"
 				+ "\n"
-				+ "\n   {pn} unban [<uid> | @tag | reply message]: to unban user using bot"
+				+ "\n   {pn} إلغاء_الحظر [<آيدي> | @تاغ | رد على رسالة]: من أجل إلغاء الحظر عن المستخدمين"
 		}
 	},
 
@@ -39,15 +43,15 @@ module.exports = {
 			userUnbanned: "Đã bỏ cấm người dùng mang id [%1 | %2], hiện tại người này có thể sử dụng bot"
 		},
 		en: {
-			noUserFound: "❌ No user found with name matching keyword: \"%1\" in bot data",
-			userFound: "🔎 Found %1 user with name matching keyword \"%2\" in bot data:\n%3",
-			uidRequired: "Uid of user to ban cannot be empty, please enter uid or tag or reply message of 1 user by user ban <uid> <reason>",
-			reasonRequired: "Reason to ban user cannot be empty, please enter uid or tag or reply message of 1 user by user ban <uid> <reason>",
-			userHasBanned: "User with id [%1 | %2] has been banned before:\n» Reason: %3\n» Date: %4",
-			userBanned: "User with id [%1 | %2] has been banned:\n» Reason: %3\n» Date: %4",
-			uidRequiredUnban: "Uid of user to unban cannot be empty",
-			userNotBanned: "User with id [%1 | %2] is not banned",
-			userUnbanned: "User with id [%1 | %2] has been unbanned"
+			noUserFound: "❌ لم يتم العثور على مستخدم لديه كلمة رئيسية مطابقة للاسم: \"%1\" في بيانات البوت",
+			userFound: "🔎 تم إيجاد %1 يتطابق مع ما قمت بإدخاله \"%2\" في بيانات البوت:\n%3",
+			uidRequired: "لا يمكن أن يكون  المستخدم الذي تريد حظره من العدم, أرجوك يجب عليك أن تقوم بكتابة الآيدي ثم السبب هكذا <لآيدي> <السبب>",
+			reasonRequired: "أرجوم لا بمكنك ترك السبب فارغا هذا ليس منطقيا قم بإدخال السبب بعد منشن أو رد أو الآيدي مثال <آيدي> <السبب>",
+			userHasBanned: "المستخدم مع الآيدي [%1 | %2] تم حظره من قبل لاداعي لحظره مجددا:\n» السبب: %3\n» التاريخ: %4",
+			userBanned: "المستخدم مع هذا الآيدي [%1 | %2] تم حظره:\n» السبب: %3\n» التاريخ: %4",
+			uidRequiredUnban: "الآيدي من أجل إلغاء الحظر لا يمكن أن يترك فارغا",
+			userNotBanned: "المستخدم مع الآيدي [%1 | %2] لم يتم حظره أصلا",
+			userUnbanned: "المستخدم مع الآيدي  [%1 | %2] تم رفع الحظر عنه"
 		}
 	},
 
@@ -55,19 +59,19 @@ module.exports = {
 		const type = args[0];
 		switch (type) {
 			// find user
-			case "find":
+			case "بحث":
 			case "-f":
-			case "search":
+			case "جد":
 			case "-s": {
 				const allUser = await usersData.getAll();
 				const keyWord = args.slice(1).join(" ");
 				const result = allUser.filter(item => (item.name || "").toLowerCase().includes(keyWord.toLowerCase()));
-				const msg = result.reduce((i, user) => i += `\n╭Name: ${user.name}\n╰ID: ${user.userID}`, "");
+				const msg = result.reduce((i, user) => i += `\n╭الإسم: ${user.name}\n╰الآيدي: ${user.userID}`, "");
 				message.reply(result.length == 0 ? getLang("noUserFound", keyWord) : getLang("userFound", result.length, keyWord, msg));
 				break;
 			}
 			// ban user
-			case "ban":
+			case "حظر":
 			case "-b": {
 				let uid, reason;
 				if (event.type == "message_reply") {
@@ -109,8 +113,9 @@ module.exports = {
 				break;
 			}
 			// unban user
-			case "unban":
-			case "-u": {
+			case "رفع_الحظر":
+      case "-u":
+      case"إلغاء_الحظر":{
 				let uid;
 				if (event.type == "message_reply") {
 					uid = event.messageReply.senderID;
