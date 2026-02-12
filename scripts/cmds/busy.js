@@ -3,21 +3,25 @@ if (!global.client.busyList)
 
 module.exports = {
 	config: {
-		name: "busy",
-		version: "1.6",
+		name: "مشغول",
+		version: "1.5",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
-		description: {
-			vi: "bật chế độ không làm phiền, khi bạn được tag bot sẽ thông báo",
-			en: "turn on do not disturb mode, when you are tagged bot will notify"
+		shortDescription: {
+			vi: "bật chế độ không làm phiền",
+			en: "قم بتشغيل وضع عدم الإزعاج"
 		},
-		category: "box chat",
+		longDescription: {
+			vi: "bật chế độ không làm phiền, khi bạn được tag bot sẽ thông báo",
+			en: "قم بتشغيل وضع عدم الإزعاج، وسيقوم الروبوت بإعلامك عندما يتم وضع علامة باسمك"
+		},
+		category: "المجموعة",
 		guide: {
 			vi: "   {pn} [để trống | <lý do>]: bật chế độ không làm phiền"
 				+ "\n   {pn} off: tắt chế độ không làm phiền",
-			en: "   {pn} [empty | <reason>]: turn on do not disturb mode"
-				+ "\n   {pn} off: turn off do not disturb mode"
+			en: "   {pn} [فارغ | <السبب>]: قم بتشغيل وضع عدم الإزعاج"
+				+ "\n   {pn} إيقاف: قم بإيقاف تشغيل وضع عدم الإزعاج"
 		}
 	},
 
@@ -30,20 +34,20 @@ module.exports = {
 			alreadyOn: "Hiện tại người dùng %1 đang bận",
 			alreadyOnWithReason: "Hiện tại người dùng %1 đang bận với lý do: %2"
 		},
-		en: {
-			turnedOff: "✅ | Do not disturb mode has been turned off",
-			turnedOn: "✅ | Do not disturb mode has been turned on",
-			turnedOnWithReason: "✅ | Do not disturb mode has been turned on with reason: %1",
-			turnedOnWithoutReason: "✅ | Do not disturb mode has been turned on",
-			alreadyOn: "User %1 is currently busy",
-			alreadyOnWithReason: "User %1 is currently busy with reason: %2"
+		ar: {
+			turnedOff: "✅ | تم إيقاف وضع عدم الإزعاج",
+			turnedOn: "✅ | تم تشغيل وضع عدم الإزعاج",
+			turnedOnWithReason: "✅ | تم تشغيل وضع عدم الإزعاج لسبب ما: %1",
+			turnedOnWithoutReason: "✅ | تم تشغيل وضع عدم الإزعاج",
+			alreadyOn: "المستخدم %1 مشغول حاليا",
+			alreadyOnWithReason: "المستخدم %1 المستخدم حاليا مشغول للهذا السبب: %2"
 		}
 	},
 
 	onStart: async function ({ args, message, event, getLang, usersData }) {
 		const { senderID } = event;
 
-		if (args[0] == "off") {
+		if (args[0] == "إيقاف") {
 			const { data } = await usersData.get(senderID);
 			delete data.busy;
 			await usersData.set(senderID, data, "data");
